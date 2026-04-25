@@ -1,8 +1,8 @@
 # STATE: KamiJi (神字)
 
-**Status:** 🟡 READY TO PLAN
+**Status:** 🟢 READY TO EXECUTE
 **Current milestone:** v1.0 — Core Reading Experience
-**Last updated:** 2026-04-24 after project initialization
+**Last updated:** 2026-04-25 — Phase 1 planned (6 plans, 3 waves)
 
 ---
 
@@ -20,7 +20,7 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 
 | Phase | Name | Status | Artifacts |
 |-------|------|--------|-----------|
-| **1** | Foundation, PWA & Theme System | ⬜ Not Started | — |
+| **1** | Foundation, PWA & Theme System | 🟡 Planned (6 plans) | RESEARCH, CONTEXT, VALIDATION, 6×PLAN |
 | **2** | Data Layer & SRS Engine | ⬜ Not Started | — |
 | **3** | Reading Core, Gestures & Furigana Engine | ⬜ Not Started | — |
 | **4** | Home, Stories & Progression | ⬜ Not Started | — |
