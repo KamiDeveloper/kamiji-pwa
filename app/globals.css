@@ -1,26 +1,236 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   KAMIJI — Global CSS Theme System
+   Single file for all 5 JLPT level themes (N5 → N1)
+   Driven by html[data-level] attribute via ThemeProvider
+   ============================================================ */
+
+/* ─── Base Brand Tokens (level-agnostic) ─── */
+@theme {
+  /* Corporate Palette */
+  --color-brand-ink: #0F1320;
+  --color-brand-vermilion: #C8382E;
+  --color-brand-gold: #C89D4A;
+
+  /* Default theme tokens (N5 — overridden per level below) */
+  --color-primary: #FF8F7A;
+  --color-primary-soft: #FCD8B8;
+  --color-bg: #FFF4E6;
+  --color-surface: #FFFFFF;
+  --color-text: #0F1320;
+  --color-text-muted: #6B6B6B;
+  --color-accent-1: #B9E6C9;
+  --color-accent-2: #A8D5FF;
+  --color-border: rgba(15, 19, 32, 0.12);
+  --radius-card: 1.5rem;
+  --radius-button: 9999px;
+  --shadow-card: 0 4px 24px rgba(255, 143, 122, 0.15);
+  --shadow-nav: 0 -1px 0 rgba(15, 19, 32, 0.08);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── N5: El Parvulario (Kindergarten) ─── */
+html[data-level="n5"] {
+  --color-primary: #FF8F7A;
+  --color-primary-soft: #FCD8B8;
+  --color-bg: #FFF4E6;
+  --color-surface: #FFFFFF;
+  --color-text: #0F1320;
+  --color-text-muted: #8A7060;
+  --color-accent-1: #B9E6C9;
+  --color-accent-2: #A8D5FF;
+  --color-border: rgba(255, 143, 122, 0.25);
+  --font-heading: var(--font-zen-maru-gothic, "Zen Maru Gothic", sans-serif);
+  --font-body: var(--font-nunito, "Nunito", sans-serif);
+  --radius-card: 1.5rem;
+  --radius-button: 9999px;
+  --shadow-card: 0 4px 24px rgba(255, 143, 122, 0.18);
+  --shadow-nav: 0 -1px 0 rgba(255, 143, 122, 0.15);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── N4: Escuela Primaria (Elementary School) ─── */
+html[data-level="n4"] {
+  --color-primary: #7EC8F8;
+  --color-primary-soft: #FFD166;
+  --color-bg: #FAF9F6;
+  --color-surface: #FFFFFF;
+  --color-text: #0F1320;
+  --color-text-muted: #606060;
+  --color-accent-1: #95D5B2;
+  --color-accent-2: #4A90E2;
+  --color-border: rgba(126, 200, 248, 0.3);
+  --font-heading: var(--font-outfit, "Outfit", sans-serif);
+  --font-body: var(--font-noto-sans-jp, "Noto Sans JP", sans-serif);
+  --radius-card: 0.75rem;
+  --radius-button: 0.5rem;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.10);
+  --shadow-nav: 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* ─── N3: Adolescencia/Instituto (High School — Dark/Neon) ─── */
+html[data-level="n3"] {
+  --color-primary: #8A5CF6;
+  --color-primary-soft: #FF5CA7;
+  --color-bg: #1A1F3A;
+  --color-surface: #232840;
+  --color-text: #E8E8F0;
+  --color-text-muted: #9090B0;
+  --color-accent-1: #00E5FF;
+  --color-accent-2: #2B2F3A;
+  --color-border: rgba(138, 92, 246, 0.3);
+  --font-heading: var(--font-outfit, "Outfit", sans-serif);
+  --font-body: var(--font-noto-sans-jp, "Noto Sans JP", sans-serif);
+  --radius-card: 0.5rem;
+  --radius-button: 0.375rem;
+  --shadow-card: 0 0 20px rgba(138, 92, 246, 0.25), 0 0 40px rgba(138, 92, 246, 0.10);
+  --shadow-nav: 0 -1px 0 rgba(138, 92, 246, 0.2);
+}
+
+/* ─── N2: Universidad/Profesional (University) ─── */
+html[data-level="n2"] {
+  --color-primary: #4286F4;
+  --color-primary-soft: #E0B868;
+  --color-bg: #F5F6F7;
+  --color-surface: #FFFFFF;
+  --color-text: #3C4043;
+  --color-text-muted: #9AA0A6;
+  --color-accent-1: #3C4043;
+  --color-accent-2: #E0B868;
+  --color-border: rgba(66, 134, 244, 0.15);
+  --font-heading: var(--font-outfit, "Outfit", sans-serif);
+  --font-body: var(--font-noto-sans-jp, "Noto Sans JP", sans-serif);
+  --radius-card: 0.375rem;
+  --radius-button: 0.25rem;
+  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-nav: 0 -1px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* ─── N1: Dominio Intelectual (Mastery — Wabi-Sabi) ─── */
+html[data-level="n1"] {
+  --color-primary: #8E2D2A;
+  --color-primary-soft: #6B6B6B;
+  --color-bg: #F2EEE6;
+  --color-surface: #F8F5F0;
+  --color-text: #0F1320;
+  --color-text-muted: #8B6F4E;
+  --color-accent-1: #6B6B6B;
+  --color-accent-2: #8B6F4E;
+  --color-border: rgba(142, 45, 42, 0.15);
+  --font-heading: var(--font-cormorant-garamond, "Cormorant Garamond", serif);
+  --font-body: var(--font-noto-serif-jp, "Noto Serif JP", serif);
+  --radius-card: 0rem;
+  --radius-button: 0rem;
+  --shadow-card: none;
+  --shadow-nav: 0 -1px 0 rgba(142, 45, 42, 0.12);
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  /* Smooth theme transitions */
+  transition: background-color 0.4s ease, color 0.4s ease;
+  /* iOS safari: prevent rubber band on body */
+  overscroll-behavior: none;
+}
+
+/* ============================================================
+   RUBY / FURIGANA — ANTI-CLS PATTERN
+   CRITICAL: Never change visibility:hidden to display:none
+   visibility:hidden preserves layout space → CLS = 0
+   display:none collapses space → causes layout shift on reveal
+   ============================================================ */
+
+ruby {
+  ruby-position: over;
+  display: ruby;
+}
+
+rt.furigana {
+  /* Pre-reserve vertical space — the key to CLS = 0 */
+  visibility: hidden;
+  opacity: 0;
+  font-size: 0.5em;
+  line-height: 1;
+  min-height: 0.6em;
+  display: block;
+  text-align: center;
+  transition: none;
+}
+
+rt.furigana.visible {
+  visibility: visible;
+  opacity: 1;
+  /* Smooth reveal via opacity only — no layout changes */
+  transition: opacity 0.2s ease-in;
+}
+
+/* ============================================================
+   BOTTOM NAVIGATION
+   ============================================================ */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  box-shadow: var(--shadow-nav);
+  z-index: 50;
+  /* Safe area for iOS home indicator */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  height: 100%;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.65rem;
+  font-family: var(--font-body);
+  transition: color 0.2s ease;
+}
+
+.tab-item.active {
+  color: var(--color-primary);
+}
+
+.tab-item:active {
+  opacity: 0.7;
+}
+
+.tab-label {
+  font-size: 0.65rem;
+}
+
+.tab-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
