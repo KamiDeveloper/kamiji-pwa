@@ -11,6 +11,8 @@ import {
   Noto_Serif_JP,
 } from "next/font/google";
 import { AuthProvider } from "@/components/AuthProvider";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { NetworkWatcher } from "@/components/NetworkWatcher";
 import "./globals.css";
 
 // ── Font definitions ──────────────────────────────────────
@@ -129,7 +131,12 @@ export default function RootLayout({
   return (
     <html lang="es" data-level="n5" className={fontClassNames}>
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <NetworkWatcher />
+            {children}
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
