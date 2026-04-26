@@ -29,6 +29,9 @@ export interface DictionaryRecord {
   level: JLPTLevel;
   onyomi?: string;
   kunyomi?: string;
+  partOfSpeech?: string;        // e.g. "noun", "verb-ichidan"
+  representativeWord?: string;  // common word using this kanji (e.g. "食べる")
+  representativeWordReading?: string; // reading of representative word
 }
 
 export interface AiCacheRecord {
@@ -81,6 +84,16 @@ class KamiJiDatabase extends Dexie {
       userProgress: "uid, level",
       // compound index [storyId+uid] for efficient per-user story lookup
       storyProgress: "++id, [storyId+uid], uid, storyId",
+    });
+
+    this.version(2).stores({
+      kanji: "++id, kanjiChar, level, scheduledDate",
+      dictionary: "++id, kanji, level",
+      aiCache: "query, cachedAt",
+      userProgress: "uid, level",
+      storyProgress: "++id, [storyId+uid], uid, storyId",
+    }).upgrade(() => {
+      // No destructive changes — new optional fields default to undefined
     });
   }
 }

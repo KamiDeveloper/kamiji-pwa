@@ -1,8 +1,8 @@
 # STATE: KamiJi (神字)
 
-**Status:** ✅ PHASE 1 COMPLETE — Ready to plan Phase 2
+**Status:** Phase 2 Executed
 **Current milestone:** v1.0 — Core Reading Experience
-**Last updated:** 2026-04-25 — Phase 1 executed (6/6 plans complete)
+**Last updated:** 2026-04-26 — Phase 2 execution complete
 
 ---
 
@@ -12,7 +12,7 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 
 **Core value:** A user can tap any kanji in a real Japanese story and instantly get its reading and meaning — then mark it as learned in a single gesture — without ever leaving the reading experience.
 
-**Current focus:** Phase 1 — Foundation, PWA & Theme System
+**Current focus:** Phase 3 — Reading Core, Gestures & Furigana Engine
 
 ---
 
@@ -21,7 +21,7 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 | Phase | Name | Status | Artifacts |
 |-------|------|--------|-----------|
 | **1** | Foundation, PWA & Theme System | ✅ Complete (6/6) | RESEARCH, CONTEXT, VALIDATION, 6×PLAN, 6×SUMMARY |
-| **2** | Data Layer & SRS Engine | ⬜ Not Started | — |
+| **2** | Data Layer & SRS Engine | ✅ Executed | CONTEXT, ASSETS, UI-SPEC, 3xPLAN, 3xSUMMARY |
 | **3** | Reading Core, Gestures & Furigana Engine | ⬜ Not Started | — |
 | **4** | Home, Stories & Progression | ⬜ Not Started | — |
 | **5** | Onboarding, Review, Settings & Notifications | ⬜ Not Started | — |
@@ -66,12 +66,10 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 ## Next Action
 
 ```
-/gsd-plan-phase 1
+/gsd-discuss-phase 3
 ```
 
-This will create `.planning/phases/01-foundation-pwa/` with:
-- `CONTEXT.md` — pre-planning decisions
-- `PLAN.md` — implementation plan for Phase 1
+This will begin context gathering for Phase 3: Reading Core, Gestures & Furigana Engine.
 
 ---
 *State initialized: 2026-04-24*

@@ -234,3 +234,137 @@ rt.furigana.visible {
   align-items: center;
   justify-content: center;
 }
+
+/* ============================================================
+   DICTIONARY LOADER SCREEN — "Preparando tu camino"
+   Reference: docs/branding/brand visual concept/Preparando Diccionario.png
+   ============================================================ */
+
+.dictionary-loader-screen {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-bg, #FFF4E6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 24px 48px;
+  z-index: 9999;
+  font-family: var(--font-body, 'Nunito', sans-serif);
+}
+
+.dictionary-loader-illustration {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 32px;
+}
+
+.dictionary-loader-fox {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+}
+
+.dictionary-loader-content {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.dictionary-loader-heading {
+  font-family: var(--font-heading, 'Cormorant Garamond', serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text, #0F1320);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.dictionary-loader-body {
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #8A7060);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Gold progress bar — matches Oro Sabio from GLOBAL-UI-SPEC */
+.dictionary-loader-bar-track {
+  width: 100%;
+  height: 10px;
+  background-color: rgba(200, 157, 74, 0.2);
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+  margin: 4px 0;
+}
+
+.dictionary-loader-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #C89D4A 0%, #E8C070 100%);
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.dictionary-loader-percentage {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  color: var(--color-brand-gold, #C89D4A);
+  font-weight: 600;
+  padding-right: 2px;
+  line-height: 1;
+}
+
+.dictionary-loader-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(200, 157, 74, 0.08);
+  border-radius: var(--radius-card, 1.5rem);
+  padding: 10px 16px;
+  width: 100%;
+}
+
+.dictionary-loader-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.dictionary-loader-phase {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #8A7060);
+  margin: 0;
+  text-align: left;
+}
+
+.dictionary-loader-footer {
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #8A7060);
+  margin: 4px 0 0;
+  letter-spacing: 0.02em;
+}
+
+.dictionary-loader-error {
+  color: var(--color-brand-vermilion, #C8382E);
+  font-size: 0.9rem;
+  margin: 0 0 16px;
+}
+
+.dictionary-loader-retry {
+  background-color: var(--color-brand-vermilion, #C8382E);
+  color: white;
+  border: none;
+  border-radius: var(--radius-button, 9999px);
+  padding: 10px 24px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: var(--font-body, 'Nunito', sans-serif);
+}

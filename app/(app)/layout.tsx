@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { BottomNav } from "@/components/BottomNav";
 import { OfflineBanner } from "@/components/OfflineBanner";
+import DictionaryLoader from "@/components/DictionaryLoader";
+import { useCurrentLevel } from "@/store";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -14,6 +16,7 @@ interface AppLayoutProps {
 export default function AppLayout({ children }: AppLayoutProps) {
   const { user, initializing } = useAuth();
   const router = useRouter();
+  const currentLevel = useCurrentLevel();
 
   useEffect(() => {
     if (!initializing && !user) {
@@ -49,7 +52,9 @@ export default function AppLayout({ children }: AppLayoutProps) {
           overscrollBehavior: "contain",
         }}
       >
-        {children}
+        <DictionaryLoader level={currentLevel}>
+          {children}
+        </DictionaryLoader>
       </main>
 
       <BottomNav />

@@ -1,0 +1,2886 @@
+[
+  {
+    "kanji": "一",
+    "reading": "いち",
+    "meaningEs": "uno",
+    "onyomi": "イチ イツ",
+    "kunyomi": "ひと- ひと.つ",
+    "partOfSpeech": "num pref adj-no suf n n-pref",
+    "level": "n5",
+    "representativeWord": "一",
+    "representativeWordReading": "いち",
+    "additionalVocab": [
+      {
+        "word": "一つ",
+        "reading": "ひとつ",
+        "meaning": "uno"
+      },
+      {
+        "word": "一つ一つ",
+        "reading": "ひとつひとつ",
+        "meaning": "uno por uno; separadamente; en detalle"
+      },
+      {
+        "word": "一つ一つ",
+        "reading": "ひとつひとつ",
+        "meaning": "uno por uno; separadamente; en detalle"
+      }
+    ]
+  },
+  {
+    "kanji": "七",
+    "reading": "しち",
+    "meaningEs": "siete; siete (usado en documentos legales)",
+    "onyomi": "シチ",
+    "kunyomi": "なな なな.つ なの",
+    "partOfSpeech": "num",
+    "level": "n5",
+    "representativeWord": "七",
+    "representativeWordReading": "しち",
+    "additionalVocab": [
+      {
+        "word": "七つ",
+        "reading": "ななつ",
+        "meaning": "7; siete; siete"
+      },
+      {
+        "word": "七福神",
+        "reading": "しちふくじん",
+        "meaning": "Siete Dioses de la Buena Suerte"
+      },
+      {
+        "word": "七夕",
+        "reading": "たなばた",
+        "meaning": "tanabata (fiesta del 7 de julio)"
+      }
+    ]
+  },
+  {
+    "kanji": "万",
+    "reading": "まんいち",
+    "meaningEs": "por si acaso; en caso de emergencia",
+    "onyomi": "マン バン",
+    "kunyomi": "よろず",
+    "partOfSpeech": "n adv adj-no",
+    "level": "n5",
+    "representativeWord": "万一",
+    "representativeWordReading": "まんいち",
+    "additionalVocab": [
+      {
+        "word": "万引き",
+        "reading": "まんびき",
+        "meaning": "robos en tiendas"
+      },
+      {
+        "word": "万事",
+        "reading": "ばんじ",
+        "meaning": "todas las cosas; todo"
+      },
+      {
+        "word": "万年筆",
+        "reading": "まんねんひつ",
+        "meaning": "pluma estilográfica"
+      }
+    ]
+  },
+  {
+    "kanji": "三",
+    "reading": "さいさん",
+    "meaningEs": "3 veces; tantas veces",
+    "onyomi": "サン ゾウ",
+    "kunyomi": "み み.つ みっ.つ",
+    "partOfSpeech": "adv adj-no",
+    "level": "n5",
+    "representativeWord": "再三",
+    "representativeWordReading": "さいさん",
+    "additionalVocab": [
+      {
+        "word": "三つ",
+        "reading": "みっつ",
+        "meaning": "3; tres; tres"
+      },
+      {
+        "word": "三角",
+        "reading": "さんかく",
+        "meaning": "triangulo; triangular"
+      },
+      {
+        "word": "三女",
+        "reading": "さんじょ",
+        "meaning": "tercera hija"
+      }
+    ]
+  },
+  {
+    "kanji": "上",
+    "reading": "おてあげ",
+    "meaningEs": "me rindo",
+    "onyomi": "ジョウ ショウ シャン",
+    "kunyomi": "うえ -うえ うわ- かみ あ.げる -あ.げる あ.がる -あ.がる あ.がり -あ.がり のぼ.る のぼ.り のぼ.せる のぼ.す たてまつ.る",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "お手上げ",
+    "representativeWordReading": "おてあげ",
+    "additionalVocab": [
+      {
+        "word": "安上がり",
+        "reading": "やすあがり",
+        "meaning": "economía"
+      },
+      {
+        "word": "以上",
+        "reading": "いじょう",
+        "meaning": "nada menos que; por lo menos; ... y más; ... y hacia arriba"
+      },
+      {
+        "word": "炎上",
+        "reading": "えんじょう",
+        "meaning": "incendiarse; quemarse"
+      }
+    ]
+  },
+  {
+    "kanji": "下",
+    "reading": "いか",
+    "meaningEs": "no exceder; y hacia abajo; ... y abajo(",
+    "onyomi": "カ ゲ",
+    "kunyomi": "した しも もと さ.げる さ.がる くだ.る くだ.り くだ.す -くだ.す くだ.さる お.ろす お.りる",
+    "partOfSpeech": "n-suf n adj-no",
+    "level": "n5",
+    "representativeWord": "以下",
+    "representativeWordReading": "いか",
+    "additionalVocab": [
+      {
+        "word": "引き下げ",
+        "reading": "ひきさげ",
+        "meaning": "reducción; corte"
+      },
+      {
+        "word": "下がる",
+        "reading": "さがる",
+        "meaning": "colgarse; disminuir; retirarse; caerse; volverse atrás; bajar; menguar; amainar; retirar; caer; retroceder"
+      },
+      {
+        "word": "下げる",
+        "reading": "さげる",
+        "meaning": "colgar(algo); bajar(algo); calzar; descartar; conceder"
+      }
+    ]
+  },
+  {
+    "kanji": "中",
+    "reading": "おはなしちゅう",
+    "meaningEs": "ocupado (al teléfono)",
+    "onyomi": "チュウ",
+    "kunyomi": "なか うち あた.る",
+    "partOfSpeech": "adj-no",
+    "level": "n5",
+    "representativeWord": "お話中",
+    "representativeWordReading": "おはなしちゅう",
+    "additionalVocab": [
+      {
+        "word": "海中",
+        "reading": "かいちゅう",
+        "meaning": "en el mar"
+      },
+      {
+        "word": "寒中",
+        "reading": "かんちゅう",
+        "meaning": "durante el invierno; en pleno frío"
+      },
+      {
+        "word": "間中",
+        "reading": "あいだじゅう",
+        "meaning": "durante"
+      }
+    ]
+  },
+  {
+    "kanji": "九",
+    "reading": "ここのつ",
+    "meaningEs": "9; nueve; nueve",
+    "onyomi": "キュウ ク",
+    "kunyomi": "ここの ここの.つ",
+    "partOfSpeech": "num n",
+    "level": "n5",
+    "representativeWord": "九つ",
+    "representativeWordReading": "ここのつ",
+    "additionalVocab": [
+      {
+        "word": "九九",
+        "reading": "くく",
+        "meaning": "(las) tablas de multiplicar"
+      },
+      {
+        "word": "九九",
+        "reading": "くく",
+        "meaning": "(las) tablas de multiplicar"
+      },
+      {
+        "word": "十九",
+        "reading": "じゅうきゅう",
+        "meaning": "diecinueve"
+      }
+    ]
+  },
+  {
+    "kanji": "二",
+    "reading": "いっせきにちょう",
+    "meaningEs": "matar dos pájaros con una piedra",
+    "onyomi": "ニ ジ",
+    "kunyomi": "ふた ふた.つ ふたたび",
+    "partOfSpeech": "exp",
+    "level": "n5",
+    "representativeWord": "一石二鳥",
+    "representativeWordReading": "いっせきにちょう",
+    "additionalVocab": [
+      {
+        "word": "十二",
+        "reading": "じゅうに",
+        "meaning": "doce"
+      },
+      {
+        "word": "十二分",
+        "reading": "じゅうにぶん",
+        "meaning": "más que suficiente"
+      },
+      {
+        "word": "真っ二つ",
+        "reading": "まっぷたつ",
+        "meaning": "justo por la mitad; justo en dos"
+      }
+    ]
+  },
+  {
+    "kanji": "五",
+    "reading": "ご",
+    "meaningEs": "cuándo; cinco",
+    "onyomi": "ゴ",
+    "kunyomi": "いつ いつ.つ",
+    "partOfSpeech": "num",
+    "level": "n5",
+    "representativeWord": "五",
+    "representativeWordReading": "ご",
+    "additionalVocab": [
+      {
+        "word": "五つ",
+        "reading": "いつつ",
+        "meaning": "cinco"
+      },
+      {
+        "word": "五感",
+        "reading": "ごかん",
+        "meaning": "los cinco sentidos"
+      },
+      {
+        "word": "五十音",
+        "reading": "ごじゅうおん",
+        "meaning": "silabario japonés"
+      }
+    ]
+  },
+  {
+    "kanji": "人",
+    "reading": "あいじん",
+    "meaningEs": "amante",
+    "onyomi": "ジン ニン",
+    "kunyomi": "ひと -り -と",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "愛人",
+    "representativeWordReading": "あいじん",
+    "additionalVocab": [
+      {
+        "word": "悪人",
+        "reading": "あくにん",
+        "meaning": "hombre malo; villano; hombre perverso; persona malvada (malvado)"
+      },
+      {
+        "word": "偉人",
+        "reading": "いじん",
+        "meaning": "gran hombre"
+      },
+      {
+        "word": "一人前",
+        "reading": "いちにんまえ",
+        "meaning": "adulto; hombría o feminidad completa"
+      }
+    ]
+  },
+  {
+    "kanji": "今",
+    "reading": "いま",
+    "meaningEs": "ahora; ya (tiempo); tiempo presente; justo ahora; pronto; más (uno)",
+    "onyomi": "コン キン",
+    "kunyomi": "いま",
+    "partOfSpeech": "n adj-no adv",
+    "level": "n5",
+    "representativeWord": "今",
+    "representativeWordReading": "いま",
+    "additionalVocab": [
+      {
+        "word": "今に",
+        "reading": "いまに",
+        "meaning": "pronto; en breve; dentro de poco"
+      },
+      {
+        "word": "今や",
+        "reading": "いまや",
+        "meaning": "ahora"
+      },
+      {
+        "word": "今夏",
+        "reading": "こんか",
+        "meaning": "este verano"
+      }
+    ]
+  },
+  {
+    "kanji": "休",
+    "reading": "うんきゅう",
+    "meaningEs": "suspensión de labores; receso; cese",
+    "onyomi": "キュウ",
+    "kunyomi": "やす.む やす.まる やす.める",
+    "partOfSpeech": "n vs vt vi",
+    "level": "n5",
+    "representativeWord": "運休",
+    "representativeWordReading": "うんきゅう",
+    "additionalVocab": [
+      {
+        "word": "夏休み",
+        "reading": "なつやすみ",
+        "meaning": "vacaciones de verano"
+      },
+      {
+        "word": "休まる",
+        "reading": "やすまる",
+        "meaning": "descansar; aliviarse; sentirse cómodo"
+      },
+      {
+        "word": "休み",
+        "reading": "やすみ",
+        "meaning": "descanso"
+      }
+    ]
+  },
+  {
+    "kanji": "会",
+    "reading": "いいんかい",
+    "meaningEs": "junta del comité; comité",
+    "onyomi": "カイ エ",
+    "kunyomi": "あ.う あ.わせる あつ.まる",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "委員会",
+    "representativeWordReading": "いいんかい",
+    "additionalVocab": [
+      {
+        "word": "医師会",
+        "reading": "いしかい",
+        "meaning": "asociación médica"
+      },
+      {
+        "word": "運動会",
+        "reading": "うんどうかい",
+        "meaning": "encuentro atlético"
+      },
+      {
+        "word": "宴会",
+        "reading": "えんかい",
+        "meaning": "banquete; fiesta; convite; celebración; festín"
+      }
+    ]
+  },
+  {
+    "kanji": "何",
+    "reading": "なにか",
+    "meaningEs": "algo",
+    "onyomi": "カ",
+    "kunyomi": "なに なん なに- なん-",
+    "partOfSpeech": "pn adv int",
+    "level": "n5",
+    "representativeWord": "何か",
+    "representativeWordReading": "なにか",
+    "additionalVocab": [
+      {
+        "word": "何しろ",
+        "reading": "なにしろ",
+        "meaning": "en todo caso; en cualquier caso; de todos modos"
+      },
+      {
+        "word": "何だか",
+        "reading": "なんだか",
+        "meaning": "no sé porqué pero..."
+      },
+      {
+        "word": "何て",
+        "reading": "なんて",
+        "meaning": "cómo..!; qué..!"
+      }
+    ]
+  },
+  {
+    "kanji": "先",
+    "reading": "つとめさき",
+    "meaningEs": "lugar de trabajo",
+    "onyomi": "セン",
+    "kunyomi": "さき ま.ず",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "勤め先",
+    "representativeWordReading": "つとめさき",
+    "additionalVocab": [
+      {
+        "word": "口先",
+        "reading": "くちさき",
+        "meaning": "meras palabras; profesiones"
+      },
+      {
+        "word": "最先端",
+        "reading": "さいせんたん",
+        "meaning": "de vanguardia; vanguardia"
+      },
+      {
+        "word": "真っ先",
+        "reading": "まっさき",
+        "meaning": "justo en frente; a la cabeza de; en primer plano"
+      }
+    ]
+  },
+  {
+    "kanji": "入",
+    "reading": "かにゅう",
+    "meaningEs": "participación; incorporarse; adscribirse; ingresar; afiliarse",
+    "onyomi": "ニュウ ジュ",
+    "kunyomi": "い.る -い.る -い.り い.れる -い.れ はい.る",
+    "partOfSpeech": "n vs vi",
+    "level": "n5",
+    "representativeWord": "加入",
+    "representativeWordReading": "かにゅう",
+    "additionalVocab": [
+      {
+        "word": "介入",
+        "reading": "かいにゅう",
+        "meaning": "intervención"
+      },
+      {
+        "word": "気に入る",
+        "reading": "きにいる",
+        "meaning": "agradar; gustar"
+      },
+      {
+        "word": "記入",
+        "reading": "きにゅう",
+        "meaning": "apunte; anotación"
+      }
+    ]
+  },
+  {
+    "kanji": "八",
+    "reading": "じゅうはち",
+    "meaningEs": "dieciocho",
+    "onyomi": "ハチ ハツ",
+    "kunyomi": "や や.つ やっ.つ よう",
+    "partOfSpeech": "num",
+    "level": "n5",
+    "representativeWord": "十八",
+    "representativeWordReading": "じゅうはち",
+    "additionalVocab": [
+      {
+        "word": "八つ当たり",
+        "reading": "やつあたり",
+        "meaning": "desquitarse con quien sea"
+      },
+      {
+        "word": "八千代",
+        "reading": "やちよ",
+        "meaning": "eternidad; miles de años"
+      },
+      {
+        "word": "八百屋",
+        "reading": "やおや",
+        "meaning": "verdulería; verdulero"
+      }
+    ]
+  },
+  {
+    "kanji": "六",
+    "reading": "じゅうろく",
+    "meaningEs": "dieciséis",
+    "onyomi": "ロク リク",
+    "kunyomi": "む む.つ むっ.つ むい",
+    "partOfSpeech": "num",
+    "level": "n5",
+    "representativeWord": "十六",
+    "representativeWordReading": "じゅうろく",
+    "additionalVocab": [
+      {
+        "word": "六",
+        "reading": "ろく",
+        "meaning": "seis"
+      },
+      {
+        "word": "六月",
+        "reading": "ろくがつ",
+        "meaning": "junio; Junio"
+      },
+      {
+        "word": "六十",
+        "reading": "ろくじゅう",
+        "meaning": "sesenta"
+      }
+    ]
+  },
+  {
+    "kanji": "円",
+    "reading": "いちえん",
+    "meaningEs": "todo un distrito; un yen; por todo; en todo; completamente",
+    "onyomi": "エン",
+    "kunyomi": "まる.い まる まど まど.か まろ.やか",
+    "partOfSpeech": "n suf adv",
+    "level": "n5",
+    "representativeWord": "一円",
+    "representativeWordReading": "いちえん",
+    "additionalVocab": [
+      {
+        "word": "円",
+        "reading": "えん",
+        "meaning": "Yen; Yenes; dinero"
+      },
+      {
+        "word": "円安",
+        "reading": "えんやす",
+        "meaning": "bajo precio del yen"
+      },
+      {
+        "word": "円弧",
+        "reading": "えんこ",
+        "meaning": "arco"
+      }
+    ]
+  },
+  {
+    "kanji": "出",
+    "reading": "かくしひきだし",
+    "meaningEs": "retirada secreta",
+    "onyomi": "シュツ スイ",
+    "kunyomi": "で.る -で だ.す -だ.す い.でる い.だす",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "隠し引き出し",
+    "representativeWordReading": "かくしひきだし",
+    "additionalVocab": [
+      {
+        "word": "演出",
+        "reading": "えんしゅつ",
+        "meaning": "dirección artistica; dirección de interpretación; representar; interpretar"
+      },
+      {
+        "word": "家出",
+        "reading": "いえで",
+        "meaning": "huida de casa; abandono de hogar"
+      },
+      {
+        "word": "外出",
+        "reading": "がいしゅつ",
+        "meaning": "salida de casa; salir; salir de casa; ir fuera"
+      }
+    ]
+  },
+  {
+    "kanji": "分",
+    "reading": "いちぶぶん",
+    "meaningEs": "una parte; una porción; una sección",
+    "onyomi": "ブン フン ブ",
+    "kunyomi": "わ.ける わ.け わ.かれる わ.かる わ.かつ",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "一部分",
+    "representativeWordReading": "いちぶぶん",
+    "additionalVocab": [
+      {
+        "word": "一分",
+        "reading": "いちぶ",
+        "meaning": "un décimo; un centésimo; uno porciento; un décimo de un sol; un cuarto de ryou (antigua moneda)"
+      },
+      {
+        "word": "引き分け",
+        "reading": "ひきわけ",
+        "meaning": "empate (en una competición)"
+      },
+      {
+        "word": "塩分",
+        "reading": "えんぶん",
+        "meaning": "cantidad de sal; salinidad"
+      }
+    ]
+  },
+  {
+    "kanji": "前",
+    "reading": "いぜん",
+    "meaningEs": "hace (tiempo); desde; antes; previamente",
+    "onyomi": "ゼン",
+    "kunyomi": "まえ -まえ",
+    "partOfSpeech": "n-suf n adv",
+    "level": "n5",
+    "representativeWord": "以前",
+    "representativeWordReading": "いぜん",
+    "additionalVocab": [
+      {
+        "word": "一人前",
+        "reading": "いちにんまえ",
+        "meaning": "adulto; hombría o feminidad completa"
+      },
+      {
+        "word": "駅前",
+        "reading": "えきまえ",
+        "meaning": "frente a la estación"
+      },
+      {
+        "word": "気前",
+        "reading": "きまえ",
+        "meaning": "generosidad"
+      }
+    ]
+  },
+  {
+    "kanji": "北",
+    "reading": "とうほく",
+    "meaningEs": "noreste",
+    "onyomi": "ホク",
+    "kunyomi": "きた",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "東北",
+    "representativeWordReading": "とうほく",
+    "additionalVocab": [
+      {
+        "word": "南北",
+        "reading": "なんぼく",
+        "meaning": "sur y norte"
+      },
+      {
+        "word": "敗北",
+        "reading": "はいぼく",
+        "meaning": "derrota"
+      },
+      {
+        "word": "北",
+        "reading": "きた",
+        "meaning": "norte"
+      }
+    ]
+  },
+  {
+    "kanji": "十",
+    "reading": "ごじゅうおん",
+    "meaningEs": "silabario japonés",
+    "onyomi": "ジュウ ジッ ジュッ",
+    "kunyomi": "とお と そ",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "五十音",
+    "representativeWordReading": "ごじゅうおん",
+    "additionalVocab": [
+      {
+        "word": "十億",
+        "reading": "じゅうおく",
+        "meaning": "mil millones; 1,000,000,000"
+      },
+      {
+        "word": "十九",
+        "reading": "じゅうきゅう",
+        "meaning": "diecinueve"
+      },
+      {
+        "word": "十五",
+        "reading": "じゅうご",
+        "meaning": "15; quince"
+      }
+    ]
+  },
+  {
+    "kanji": "千",
+    "reading": "なんぜん",
+    "meaningEs": "muchos miles",
+    "onyomi": "セン",
+    "kunyomi": "ち",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "何千",
+    "representativeWordReading": "なんぜん",
+    "additionalVocab": [
+      {
+        "word": "千",
+        "reading": "せん",
+        "meaning": "1.000; mil; 1.000; mil (usado en documentos legales)"
+      },
+      {
+        "word": "千鳥",
+        "reading": "ちどり",
+        "meaning": "chorlito (ave)"
+      },
+      {
+        "word": "千島",
+        "reading": "ちしま",
+        "meaning": "islas Kuriles"
+      }
+    ]
+  },
+  {
+    "kanji": "午",
+    "reading": "うま",
+    "meaningEs": "séptimo signo del zodiaco chino (El Caballo; 11a.m.-1p.m.; sur; Mayo)",
+    "onyomi": "ゴ",
+    "kunyomi": "うま",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "午",
+    "representativeWordReading": "うま",
+    "additionalVocab": [
+      {
+        "word": "午後",
+        "reading": "ごご",
+        "meaning": "la tarde; p.m; P.M."
+      },
+      {
+        "word": "午前",
+        "reading": "ごぜん",
+        "meaning": "la mañana; A.M."
+      },
+      {
+        "word": "正午",
+        "reading": "しょうご",
+        "meaning": "mediodía"
+      }
+    ]
+  },
+  {
+    "kanji": "半",
+    "reading": "かはんすう",
+    "meaningEs": "mayoría",
+    "onyomi": "ハン",
+    "kunyomi": "なか.ば",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "過半数",
+    "representativeWordReading": "かはんすう",
+    "additionalVocab": [
+      {
+        "word": "後半",
+        "reading": "こうはん",
+        "meaning": "segunda mitad"
+      },
+      {
+        "word": "上半身",
+        "reading": "じょうはんしん",
+        "meaning": "torso"
+      },
+      {
+        "word": "大半",
+        "reading": "たいはん",
+        "meaning": "mayor parte"
+      }
+    ]
+  },
+  {
+    "kanji": "南",
+    "reading": "ちゅうなんべい",
+    "meaningEs": "América Central y Sur",
+    "onyomi": "ナン ナ",
+    "kunyomi": "みなみ",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "中南米",
+    "representativeWordReading": "ちゅうなんべい",
+    "additionalVocab": [
+      {
+        "word": "東南",
+        "reading": "とうなん",
+        "meaning": "sureste"
+      },
+      {
+        "word": "南",
+        "reading": "みなみ",
+        "meaning": "sur; procedente del sur"
+      },
+      {
+        "word": "南アフリカ",
+        "reading": "みなみアフリカ",
+        "meaning": "Sudáfrica"
+      }
+    ]
+  },
+  {
+    "kanji": "友",
+    "reading": "がくゆう",
+    "meaningEs": "amigo de la escuela",
+    "onyomi": "ユウ",
+    "kunyomi": "とも",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "学友",
+    "representativeWordReading": "がくゆう",
+    "additionalVocab": [
+      {
+        "word": "血友病",
+        "reading": "けつゆうびょう",
+        "meaning": "hemofilia"
+      },
+      {
+        "word": "交友",
+        "reading": "こうゆう",
+        "meaning": "amigo; compañero"
+      },
+      {
+        "word": "親友",
+        "reading": "しんゆう",
+        "meaning": "amigo íntimo; amigo; compinche; colega"
+      }
+    ]
+  },
+  {
+    "kanji": "口",
+    "reading": "いくどうおん",
+    "meaningEs": "en concierto con; con una voz; unánimemente; en una voz",
+    "onyomi": "コウ ク",
+    "kunyomi": "くち",
+    "partOfSpeech": "n adj-no",
+    "level": "n5",
+    "representativeWord": "異口同音",
+    "representativeWordReading": "いくどうおん",
+    "additionalVocab": [
+      {
+        "word": "一口",
+        "reading": "ひとくち",
+        "meaning": "bocado; una palabra; mordida; sorbo; trago"
+      },
+      {
+        "word": "陰口",
+        "reading": "かげぐち",
+        "meaning": "cotilleo; chismorreo; chisme malicioso; calumnia; hablar mal a espaldas de alguien"
+      },
+      {
+        "word": "戸口",
+        "reading": "とぐち",
+        "meaning": "puerta"
+      }
+    ]
+  },
+  {
+    "kanji": "古",
+    "reading": "けいこ",
+    "meaningEs": "práctica; entrenamiento; estudio",
+    "onyomi": "コ",
+    "kunyomi": "ふる.い ふる- -ふる.す",
+    "partOfSpeech": "n vs vt",
+    "level": "n5",
+    "representativeWord": "稽古",
+    "representativeWordReading": "けいこ",
+    "additionalVocab": [
+      {
+        "word": "古い",
+        "reading": "ふるい",
+        "meaning": "(objetos) viejo; antiguo; anticuado; antigüedad; articulo obsoleto; (objeto) viejo; antiguo; anticuado; antigüedad; articulo obsoleto"
+      },
+      {
+        "word": "古書",
+        "reading": "こしょ",
+        "meaning": "libro antiguo"
+      },
+      {
+        "word": "古城",
+        "reading": "こじょう",
+        "meaning": "castillo viejo; fortaleza vieja"
+      }
+    ]
+  },
+  {
+    "kanji": "右",
+    "reading": "みぎ",
+    "meaningEs": "derecha",
+    "onyomi": "ウ ユウ",
+    "kunyomi": "みぎ",
+    "partOfSpeech": "n adj-no",
+    "level": "n5",
+    "representativeWord": "右",
+    "representativeWordReading": "みぎ",
+    "additionalVocab": [
+      {
+        "word": "右手",
+        "reading": "みぎて",
+        "meaning": "mano derecha"
+      },
+      {
+        "word": "右翼",
+        "reading": "うよく",
+        "meaning": "de la derecha; derechista"
+      },
+      {
+        "word": "右腕",
+        "reading": "みぎうで",
+        "meaning": "brazo derecho"
+      }
+    ]
+  },
+  {
+    "kanji": "名",
+    "reading": "いみょう",
+    "meaningEs": "otro nombre; apodo; alias",
+    "onyomi": "メイ ミョウ",
+    "kunyomi": "な -な",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "異名",
+    "representativeWordReading": "いみょう",
+    "additionalVocab": [
+      {
+        "word": "汚名",
+        "reading": "おめい",
+        "meaning": "mancilla; deshonor; deshonra"
+      },
+      {
+        "word": "改名",
+        "reading": "かいめい",
+        "meaning": "cambio de nombre"
+      },
+      {
+        "word": "芸名",
+        "reading": "げいめい",
+        "meaning": "nombre artístico"
+      }
+    ]
+  },
+  {
+    "kanji": "四",
+    "reading": "よっつ",
+    "meaningEs": "4; cuatro; cuatro",
+    "onyomi": "シ",
+    "kunyomi": "よ よ.つ よっ.つ よん",
+    "partOfSpeech": "num n",
+    "level": "n5",
+    "representativeWord": "四つ",
+    "representativeWordReading": "よっつ",
+    "additionalVocab": [
+      {
+        "word": "四角",
+        "reading": "しかく",
+        "meaning": "cuadrado"
+      },
+      {
+        "word": "四角い",
+        "reading": "しかくい",
+        "meaning": "cuadrado"
+      },
+      {
+        "word": "四季",
+        "reading": "しき",
+        "meaning": "cuatro estaciones"
+      }
+    ]
+  },
+  {
+    "kanji": "国",
+    "reading": "あいこく",
+    "meaningEs": "amor al país (de uno); patriotismo",
+    "onyomi": "コク",
+    "kunyomi": "くに",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "愛国",
+    "representativeWordReading": "あいこく",
+    "additionalVocab": [
+      {
+        "word": "異国",
+        "reading": "いこく",
+        "meaning": "país extranjero; extranjero; exótico"
+      },
+      {
+        "word": "一国",
+        "reading": "いっこく",
+        "meaning": "todo el país; testarudo; terco; arrebatado"
+      },
+      {
+        "word": "王国",
+        "reading": "おうこく",
+        "meaning": "reino; monarquía"
+      }
+    ]
+  },
+  {
+    "kanji": "土",
+    "reading": "きょうど",
+    "meaningEs": "lugar de nacimiento; viejo hogar de uno",
+    "onyomi": "ド ト",
+    "kunyomi": "つち",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "郷土",
+    "representativeWordReading": "きょうど",
+    "additionalVocab": [
+      {
+        "word": "国土",
+        "reading": "こくど",
+        "meaning": "territorio nacional"
+      },
+      {
+        "word": "浄土",
+        "reading": "じょうど",
+        "meaning": "cielo; gloria; paraíso"
+      },
+      {
+        "word": "土",
+        "reading": "つち",
+        "meaning": "tierra; suelo"
+      }
+    ]
+  },
+  {
+    "kanji": "外",
+    "reading": "あんがい",
+    "meaningEs": "inesperadamente",
+    "onyomi": "ガイ ゲ",
+    "kunyomi": "そと ほか はず.す はず.れる と-",
+    "partOfSpeech": "adv adv-to adj-na",
+    "level": "n5",
+    "representativeWord": "案外",
+    "representativeWordReading": "あんがい",
+    "additionalVocab": [
+      {
+        "word": "以外",
+        "reading": "いがい",
+        "meaning": "excepto; con la excepción"
+      },
+      {
+        "word": "意外",
+        "reading": "いがい",
+        "meaning": "inesperado; sorprendente"
+      },
+      {
+        "word": "域外",
+        "reading": "いきがい",
+        "meaning": "fuera del área"
+      }
+    ]
+  },
+  {
+    "kanji": "多",
+    "reading": "かた",
+    "meaningEs": "exceso; superabundante",
+    "onyomi": "タ",
+    "kunyomi": "おお.い まさ.に まさ.る",
+    "partOfSpeech": "n adj-na",
+    "level": "n5",
+    "representativeWord": "過多",
+    "representativeWordReading": "かた",
+    "additionalVocab": [
+      {
+        "word": "数多く",
+        "reading": "かずおおく",
+        "meaning": "en gran número"
+      },
+      {
+        "word": "多い",
+        "reading": "おおい",
+        "meaning": "muchos; numeroso"
+      },
+      {
+        "word": "多額",
+        "reading": "たがく",
+        "meaning": "gran cantidad de dinero"
+      }
+    ]
+  },
+  {
+    "kanji": "大",
+    "reading": "いだい",
+    "meaningEs": "grandeza",
+    "onyomi": "ダイ タイ",
+    "kunyomi": "おお- おお.きい -おお.いに",
+    "partOfSpeech": "adj-na",
+    "level": "n5",
+    "representativeWord": "偉大",
+    "representativeWordReading": "いだい",
+    "additionalVocab": [
+      {
+        "word": "医大",
+        "reading": "いだい",
+        "meaning": "universidad médica; escuela médica"
+      },
+      {
+        "word": "一大",
+        "reading": "いちだい",
+        "meaning": "uno grande .."
+      },
+      {
+        "word": "拡大",
+        "reading": "かくだい",
+        "meaning": "amplificación; aumento; incremento; acrecentamiento"
+      }
+    ]
+  },
+  {
+    "kanji": "天",
+    "reading": "あくてんこう",
+    "meaningEs": "mal tiempo (borrascoso); mal clima; temporal; tempestad",
+    "onyomi": "テン",
+    "kunyomi": "あまつ あめ あま-",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "悪天候",
+    "representativeWordReading": "あくてんこう",
+    "additionalVocab": [
+      {
+        "word": "雨天",
+        "reading": "うてん",
+        "meaning": "tiempo lluvioso"
+      },
+      {
+        "word": "炎天",
+        "reading": "えんてん",
+        "meaning": "calor abrasador"
+      },
+      {
+        "word": "楽天家",
+        "reading": "らくてんか",
+        "meaning": "optimista; persona de trato fácil"
+      }
+    ]
+  },
+  {
+    "kanji": "女",
+    "reading": "あくじょ",
+    "meaningEs": "mujer malvada o fea",
+    "onyomi": "ジョ ニョ ニョウ",
+    "kunyomi": "おんな め",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "悪女",
+    "representativeWordReading": "あくじょ",
+    "additionalVocab": [
+      {
+        "word": "王女",
+        "reading": "おうじょ",
+        "meaning": "princesa"
+      },
+      {
+        "word": "皇女",
+        "reading": "こうじょ",
+        "meaning": "princesa; princesa imperial"
+      },
+      {
+        "word": "三女",
+        "reading": "さんじょ",
+        "meaning": "tercera hija"
+      }
+    ]
+  },
+  {
+    "kanji": "子",
+    "reading": "いす",
+    "meaningEs": "silla",
+    "onyomi": "シ ス ツ",
+    "kunyomi": "こ -こ ね",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "椅子",
+    "representativeWordReading": "いす",
+    "additionalVocab": [
+      {
+        "word": "遺伝子",
+        "reading": "いでんし",
+        "meaning": "gen; genética"
+      },
+      {
+        "word": "一人息子",
+        "reading": "ひとりむすこ",
+        "meaning": "un sólo hijo"
+      },
+      {
+        "word": "因子",
+        "reading": "いんし",
+        "meaning": "(mat) factor; divisor; elemento"
+      }
+    ]
+  },
+  {
+    "kanji": "学",
+    "reading": "いがく",
+    "meaningEs": "medicina; ciencia médica",
+    "onyomi": "ガク",
+    "kunyomi": "まな.ぶ",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "医学",
+    "representativeWordReading": "いがく",
+    "additionalVocab": [
+      {
+        "word": "英文学",
+        "reading": "えいぶんがく",
+        "meaning": "literatura inglesa"
+      },
+      {
+        "word": "化学",
+        "reading": "かがく",
+        "meaning": "química"
+      },
+      {
+        "word": "化学肥料",
+        "reading": "かがくひりょう",
+        "meaning": "fertilizante artificial (químico)"
+      }
+    ]
+  },
+  {
+    "kanji": "安",
+    "reading": "やすい",
+    "meaningEs": "barato",
+    "onyomi": "アン",
+    "kunyomi": "やす.い やす.まる やす やす.らか",
+    "partOfSpeech": "adj-i",
+    "level": "n5",
+    "representativeWord": "安い",
+    "representativeWordReading": "やすい",
+    "additionalVocab": [
+      {
+        "word": "安らか",
+        "reading": "やすらか",
+        "meaning": "pacífico; tranquilo; calma; quieto; sosegado"
+      },
+      {
+        "word": "安らぎ",
+        "reading": "やすらぎ",
+        "meaning": "paz; tranquilidad"
+      },
+      {
+        "word": "安易",
+        "reading": "あんい",
+        "meaning": "fácil; simple"
+      }
+    ]
+  },
+  {
+    "kanji": "小",
+    "reading": "かしょうひょうか",
+    "meaningEs": "infravalorar; minusvalorar; subestimar",
+    "onyomi": "ショウ",
+    "kunyomi": "ちい.さい こ- お- さ-",
+    "partOfSpeech": "n vs adj-no vt",
+    "level": "n5",
+    "representativeWord": "過小評価",
+    "representativeWordReading": "かしょうひょうか",
+    "additionalVocab": [
+      {
+        "word": "最小",
+        "reading": "さいしょう",
+        "meaning": "más pequeño; al mínimo"
+      },
+      {
+        "word": "最小限",
+        "reading": "さいしょうげん",
+        "meaning": "más pequeño; al mínimo"
+      },
+      {
+        "word": "芝居小屋",
+        "reading": "しばいごや",
+        "meaning": "teatro"
+      }
+    ]
+  },
+  {
+    "kanji": "少",
+    "reading": "きしょう",
+    "meaningEs": "escaso; poco común; raro",
+    "onyomi": "ショウ",
+    "kunyomi": "すく.ない すこ.し",
+    "partOfSpeech": "adj-na n",
+    "level": "n5",
+    "representativeWord": "希少",
+    "representativeWordReading": "きしょう",
+    "additionalVocab": [
+      {
+        "word": "減少",
+        "reading": "げんしょう",
+        "meaning": "disminución; aminoración; baja"
+      },
+      {
+        "word": "最少",
+        "reading": "さいしょう",
+        "meaning": "el más pequeño; mínimo; menor"
+      },
+      {
+        "word": "少尉",
+        "reading": "しょうい",
+        "meaning": "subteniente"
+      }
+    ]
+  },
+  {
+    "kanji": "山",
+    "reading": "かざん",
+    "meaningEs": "volcán",
+    "onyomi": "サン セン",
+    "kunyomi": "やま",
+    "partOfSpeech": "n adj-no",
+    "level": "n5",
+    "representativeWord": "火山",
+    "representativeWordReading": "かざん",
+    "additionalVocab": [
+      {
+        "word": "火山灰",
+        "reading": "かざんばい",
+        "meaning": "ceniza volcánica"
+      },
+      {
+        "word": "岩山",
+        "reading": "いわやま",
+        "meaning": "montaña rocosa"
+      },
+      {
+        "word": "鉱山",
+        "reading": "こうざん",
+        "meaning": "mina (de minerales)"
+      }
+    ]
+  },
+  {
+    "kanji": "川",
+    "reading": "かせん",
+    "meaningEs": "ríos y afluentes",
+    "onyomi": "セン",
+    "kunyomi": "かわ",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "河川",
+    "representativeWordReading": "かせん",
+    "additionalVocab": [
+      {
+        "word": "山川",
+        "reading": "さんせん",
+        "meaning": "montañas y ríos"
+      },
+      {
+        "word": "小川",
+        "reading": "おがわ",
+        "meaning": "arroyo"
+      },
+      {
+        "word": "川",
+        "reading": "かわ",
+        "meaning": "río; arroyo; río; arroyo; el río ... (sufijo usado para nombres de ríos)"
+      }
+    ]
+  },
+  {
+    "kanji": "左",
+    "reading": "ひだり",
+    "meaningEs": "izquierda",
+    "onyomi": "サ シャ",
+    "kunyomi": "ひだり",
+    "partOfSpeech": "n adj-no",
+    "level": "n5",
+    "representativeWord": "左",
+    "representativeWordReading": "ひだり",
+    "additionalVocab": [
+      {
+        "word": "左右",
+        "reading": "さゆう",
+        "meaning": "izquierda y derecha"
+      },
+      {
+        "word": "左手",
+        "reading": "ひだりて",
+        "meaning": "mano izquierda"
+      },
+      {
+        "word": "左遷",
+        "reading": "させん",
+        "meaning": "degradación"
+      }
+    ]
+  },
+  {
+    "kanji": "年",
+    "reading": "いっしゅうねん",
+    "meaningEs": "un año completo",
+    "onyomi": "ネン",
+    "kunyomi": "とし",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "一周年",
+    "representativeWordReading": "いっしゅうねん",
+    "additionalVocab": [
+      {
+        "word": "往年",
+        "reading": "おうねん",
+        "meaning": "pionero modelo a seguir"
+      },
+      {
+        "word": "会計年度",
+        "reading": "かいけいねんど",
+        "meaning": "año fiscal"
+      },
+      {
+        "word": "学年",
+        "reading": "がくねん",
+        "meaning": "año escolar; grado escolar"
+      }
+    ]
+  },
+  {
+    "kanji": "店",
+    "reading": "かいてん",
+    "meaningEs": "apertura (inauguración) de un negocio",
+    "onyomi": "テン",
+    "kunyomi": "みせ たな",
+    "partOfSpeech": "n vs vt vi",
+    "level": "n5",
+    "representativeWord": "開店",
+    "representativeWordReading": "かいてん",
+    "additionalVocab": [
+      {
+        "word": "喫茶店",
+        "reading": "きっさてん",
+        "meaning": "cafetería"
+      },
+      {
+        "word": "支店",
+        "reading": "してん",
+        "meaning": "sucursal; filial"
+      },
+      {
+        "word": "書店",
+        "reading": "しょてん",
+        "meaning": "librería"
+      }
+    ]
+  },
+  {
+    "kanji": "後",
+    "reading": "いご",
+    "meaningEs": "en adelante; desde ahora; en lo sucesivo; en un futuro",
+    "onyomi": "ゴ コウ",
+    "kunyomi": "のち うし.ろ うしろ あと おく.れる",
+    "partOfSpeech": "n adv",
+    "level": "n5",
+    "representativeWord": "以後",
+    "representativeWordReading": "いご",
+    "additionalVocab": [
+      {
+        "word": "午後",
+        "reading": "ごご",
+        "meaning": "la tarde; p.m; P.M."
+      },
+      {
+        "word": "後",
+        "reading": "あと",
+        "meaning": "después; luego"
+      },
+      {
+        "word": "後ろ",
+        "reading": "うしろ",
+        "meaning": "detrás; atrás; parte trasera; después; detrás; atrás; parte trasera"
+      }
+    ]
+  },
+  {
+    "kanji": "手",
+    "reading": "おてあげ",
+    "meaningEs": "me rindo",
+    "onyomi": "シュ ズ",
+    "kunyomi": "て て- -て た-",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "お手上げ",
+    "representativeWordReading": "おてあげ",
+    "additionalVocab": [
+      {
+        "word": "握手",
+        "reading": "あくしゅ",
+        "meaning": "dar un apretón de manos; dar la mano; estrechar la mano; apretón de manos"
+      },
+      {
+        "word": "一手",
+        "reading": "いって",
+        "meaning": "movimiento (en juego); método; sin ayuda; monopolio"
+      },
+      {
+        "word": "一番手",
+        "reading": "いちばんて",
+        "meaning": "primer jugador; primer trabajador"
+      }
+    ]
+  },
+  {
+    "kanji": "新",
+    "reading": "いしん",
+    "meaningEs": "restauración (ej.; Meiji)",
+    "onyomi": "シン",
+    "kunyomi": "あたら.しい あら.た あら- にい-",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "維新",
+    "representativeWordReading": "いしん",
+    "additionalVocab": [
+      {
+        "word": "一新",
+        "reading": "いっしん",
+        "meaning": "cambio completo; reforma; restauración; remodelación; reconstrucción; renovación; reanudación"
+      },
+      {
+        "word": "改新",
+        "reading": "かいしん",
+        "meaning": "reforma"
+      },
+      {
+        "word": "革新",
+        "reading": "かくしん",
+        "meaning": "innovación; reforma; novedad"
+      }
+    ]
+  },
+  {
+    "kanji": "日",
+    "reading": "かようび",
+    "meaningEs": "Martes",
+    "onyomi": "ニチ ジツ",
+    "kunyomi": "ひ -び -か",
+    "partOfSpeech": "n adv",
+    "level": "n5",
+    "representativeWord": "火曜日",
+    "representativeWordReading": "かようび",
+    "additionalVocab": [
+      {
+        "word": "期日",
+        "reading": "きじつ",
+        "meaning": "fecha de plazo"
+      },
+      {
+        "word": "記念日",
+        "reading": "きねんび",
+        "meaning": "aniversario"
+      },
+      {
+        "word": "休日",
+        "reading": "きゅうじつ",
+        "meaning": "día libre"
+      }
+    ]
+  },
+  {
+    "kanji": "時",
+    "reading": "いちじきん",
+    "meaningEs": "gran suma; plus; pago aislado",
+    "onyomi": "ジ",
+    "kunyomi": "とき -どき",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "一時金",
+    "representativeWordReading": "いちじきん",
+    "additionalVocab": [
+      {
+        "word": "一時的",
+        "reading": "いちじてき",
+        "meaning": "temporal; transitorio"
+      },
+      {
+        "word": "黄金時代",
+        "reading": "おうごんじだい",
+        "meaning": "edad de oro"
+      },
+      {
+        "word": "現時点",
+        "reading": "げんじてん",
+        "meaning": "este momento actual (lit punto del presente)"
+      }
+    ]
+  },
+  {
+    "kanji": "書",
+    "reading": "いしょ",
+    "meaningEs": "voluntad; testamento; carta testamentaria",
+    "onyomi": "ショ",
+    "kunyomi": "か.く -が.き -がき",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "遺書",
+    "representativeWordReading": "いしょ",
+    "additionalVocab": [
+      {
+        "word": "横書き",
+        "reading": "よこがき",
+        "meaning": "escritura horizontal"
+      },
+      {
+        "word": "下書き",
+        "reading": "したがき",
+        "meaning": "borrador; bosquejo"
+      },
+      {
+        "word": "願書",
+        "reading": "がんしょ",
+        "meaning": "solicitud (por escrito)"
+      }
+    ]
+  },
+  {
+    "kanji": "月",
+    "reading": "かくげつ",
+    "meaningEs": "bimensual",
+    "onyomi": "ゲツ ガツ",
+    "kunyomi": "つき",
+    "partOfSpeech": "n adj-no",
+    "level": "n5",
+    "representativeWord": "隔月",
+    "representativeWordReading": "かくげつ",
+    "additionalVocab": [
+      {
+        "word": "月額",
+        "reading": "げつがく",
+        "meaning": "cantidad mensual"
+      },
+      {
+        "word": "月刊",
+        "reading": "げっかん",
+        "meaning": "publicación mensual; edición mensual"
+      },
+      {
+        "word": "月給",
+        "reading": "げっきゅう",
+        "meaning": "salario mensual"
+      }
+    ]
+  },
+  {
+    "kanji": "木",
+    "reading": "ざいもく",
+    "meaningEs": "maderas",
+    "onyomi": "ボク モク",
+    "kunyomi": "き こ-",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "材木",
+    "representativeWordReading": "ざいもく",
+    "additionalVocab": [
+      {
+        "word": "雑木林",
+        "reading": "ぞうきばやし",
+        "meaning": "bosque mixto; arboleda o bosque con árboles de diferentes especies"
+      },
+      {
+        "word": "樹木",
+        "reading": "じゅもく",
+        "meaning": "árbol; árboles y arbustos"
+      },
+      {
+        "word": "植木鉢",
+        "reading": "うえきばち",
+        "meaning": "maceta; tiesto"
+      }
+    ]
+  },
+  {
+    "kanji": "本",
+    "reading": "いっぽん",
+    "meaningEs": "cilindro largo",
+    "onyomi": "ホン",
+    "kunyomi": "もと",
+    "partOfSpeech": "n n-suf",
+    "level": "n5",
+    "representativeWord": "一本",
+    "representativeWordReading": "いっぽん",
+    "additionalVocab": [
+      {
+        "word": "絵本",
+        "reading": "えほん",
+        "meaning": "libro ilustrado"
+      },
+      {
+        "word": "基本",
+        "reading": "きほん",
+        "meaning": "bases; cimientos; fundamentos"
+      },
+      {
+        "word": "基本的",
+        "reading": "きほんてき",
+        "meaning": "básico (fundamental)"
+      }
+    ]
+  },
+  {
+    "kanji": "来",
+    "reading": "いらい",
+    "meaningEs": "desde que; de ahora en adelante",
+    "onyomi": "ライ タイ",
+    "kunyomi": "く.る きた.る きた.す き.たす き.たる き こ",
+    "partOfSpeech": "n-suf n adv",
+    "level": "n5",
+    "representativeWord": "以来",
+    "representativeWordReading": "いらい",
+    "additionalVocab": [
+      {
+        "word": "往来",
+        "reading": "おうらい",
+        "meaning": "circulación; idas y venidas; trasiego; tráfico; tránsito; calle, avenida, camino; circular; ir y venir; transitar"
+      },
+      {
+        "word": "家来",
+        "reading": "けらい",
+        "meaning": "súbdito; vasallo; seguidor"
+      },
+      {
+        "word": "外来",
+        "reading": "がいらい",
+        "meaning": "de origen foráneo"
+      }
+    ]
+  },
+  {
+    "kanji": "東",
+    "reading": "きょくとう",
+    "meaningEs": "Extremo Oriente; Lejano Oriente",
+    "onyomi": "トウ",
+    "kunyomi": "ひがし",
+    "partOfSpeech": "n adj-no",
+    "level": "n5",
+    "representativeWord": "極東",
+    "representativeWordReading": "きょくとう",
+    "additionalVocab": [
+      {
+        "word": "中東",
+        "reading": "ちゅうとう",
+        "meaning": "Oriente Medio"
+      },
+      {
+        "word": "東",
+        "reading": "ひがし",
+        "meaning": "este; oriente"
+      },
+      {
+        "word": "東欧",
+        "reading": "とうおう",
+        "meaning": "Europa oriental"
+      }
+    ]
+  },
+  {
+    "kanji": "校",
+    "reading": "がっこう",
+    "meaningEs": "escuela",
+    "onyomi": "コウ キョウ",
+    "kunyomi": "",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "学校",
+    "representativeWordReading": "がっこう",
+    "additionalVocab": [
+      {
+        "word": "休校",
+        "reading": "きゅうこう",
+        "meaning": "cerrar la escuela (temporalmente); abandonarse los estudios"
+      },
+      {
+        "word": "校歌",
+        "reading": "こうか",
+        "meaning": "canción escolar"
+      },
+      {
+        "word": "校旗",
+        "reading": "こうき",
+        "meaning": "bandera de la escuela"
+      }
+    ]
+  },
+  {
+    "kanji": "母",
+    "reading": "おかあさん",
+    "meaningEs": "madre",
+    "onyomi": "ボ",
+    "kunyomi": "はは も",
+    "partOfSpeech": "n pn",
+    "level": "n5",
+    "representativeWord": "お母さん",
+    "representativeWordReading": "おかあさん",
+    "additionalVocab": [
+      {
+        "word": "義母",
+        "reading": "ぎぼ",
+        "meaning": "suegra; madre adoptiva; madrasta"
+      },
+      {
+        "word": "空母",
+        "reading": "くうぼ",
+        "meaning": "portaaviones"
+      },
+      {
+        "word": "賢母",
+        "reading": "けんぼ",
+        "meaning": "madre sabia; madre inteligente"
+      }
+    ]
+  },
+  {
+    "kanji": "毎",
+    "reading": "まいかい",
+    "meaningEs": "cada vez",
+    "onyomi": "マイ",
+    "kunyomi": "ごと -ごと.に",
+    "partOfSpeech": "n adv",
+    "level": "n5",
+    "representativeWord": "毎回",
+    "representativeWordReading": "まいかい",
+    "additionalVocab": [
+      {
+        "word": "毎週",
+        "reading": "まいしゅう",
+        "meaning": "cada semana"
+      },
+      {
+        "word": "毎朝",
+        "reading": "まいあさ",
+        "meaning": "cada mañana"
+      },
+      {
+        "word": "毎度",
+        "reading": "まいど",
+        "meaning": "cada vez; vez y otra vez"
+      }
+    ]
+  },
+  {
+    "kanji": "気",
+    "reading": "いき",
+    "meaningEs": "espíritu; corazón; disposición",
+    "onyomi": "キ ケ",
+    "kunyomi": "いき き",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "意気",
+    "representativeWordReading": "いき",
+    "additionalVocab": [
+      {
+        "word": "意気込む",
+        "reading": "いきごむ",
+        "meaning": "ser entusiástico sobre"
+      },
+      {
+        "word": "意気地",
+        "reading": "いくじ",
+        "meaning": "dignidad; confianza en si mismo; agallas; carácter; firmeza"
+      },
+      {
+        "word": "一気",
+        "reading": "いっき",
+        "meaning": "¡beban! (dicho repetidamente por el animador de la fiesta)"
+      }
+    ]
+  },
+  {
+    "kanji": "水",
+    "reading": "おすい",
+    "meaningEs": "aguas fecales; aguas residuales",
+    "onyomi": "スイ",
+    "kunyomi": "みず みず-",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "汚水",
+    "representativeWordReading": "おすい",
+    "additionalVocab": [
+      {
+        "word": "下水",
+        "reading": "げすい",
+        "meaning": "aguas residuales; aguas negras"
+      },
+      {
+        "word": "下水道",
+        "reading": "げすいどう",
+        "meaning": "alcantarillado"
+      },
+      {
+        "word": "海水",
+        "reading": "かいすい",
+        "meaning": "agua oceánica"
+      }
+    ]
+  },
+  {
+    "kanji": "火",
+    "reading": "ひ",
+    "meaningEs": "fuego; flama; llama; llamarada",
+    "onyomi": "カ",
+    "kunyomi": "ひ -び ほ-",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "火",
+    "representativeWordReading": "ひ",
+    "additionalVocab": [
+      {
+        "word": "火炎瓶",
+        "reading": "かえんびん",
+        "meaning": "cóctel Molotov"
+      },
+      {
+        "word": "火花",
+        "reading": "ひばな",
+        "meaning": "chispa"
+      },
+      {
+        "word": "火器",
+        "reading": "かき",
+        "meaning": "armas de fuego"
+      }
+    ]
+  },
+  {
+    "kanji": "父",
+    "reading": "おとうさん",
+    "meaningEs": "padre",
+    "onyomi": "フ",
+    "kunyomi": "ちち",
+    "partOfSpeech": "n pn",
+    "level": "n5",
+    "representativeWord": "お父さん",
+    "representativeWordReading": "おとうさん",
+    "additionalVocab": [
+      {
+        "word": "義父",
+        "reading": "ぎふ",
+        "meaning": "suegro; padre adoptivo; padrastro"
+      },
+      {
+        "word": "神父",
+        "reading": "しんぷ",
+        "meaning": "sacerdote católico; padre"
+      },
+      {
+        "word": "親父",
+        "reading": "おやじ",
+        "meaning": "mi padre; papá; viejo; abuelo"
+      }
+    ]
+  },
+  {
+    "kanji": "生",
+    "reading": "いっしょうけんめい",
+    "meaningEs": "muy difícil; con todo el esfuerzo posible; con todo el poder de uno",
+    "onyomi": "セイ ショウ",
+    "kunyomi": "い.きる い.かす い.ける う.まれる うま.れる う.まれ うまれ う.む お.う は.える は.やす き なま なま- な.る な.す む.す -う",
+    "partOfSpeech": "adv adj-na n",
+    "level": "n5",
+    "representativeWord": "一生懸命",
+    "representativeWordReading": "いっしょうけんめい",
+    "additionalVocab": [
+      {
+        "word": "衛生",
+        "reading": "えいせい",
+        "meaning": "higiene; sanidad; salubridad"
+      },
+      {
+        "word": "往生",
+        "reading": "おうじょう",
+        "meaning": "viaje al paraíso; muerte; deceso; sumisión; rendimiento; desistimiento"
+      },
+      {
+        "word": "芽生え",
+        "reading": "めばえ",
+        "meaning": "brote (de una planta); yema"
+      }
+    ]
+  },
+  {
+    "kanji": "男",
+    "reading": "いちなん",
+    "meaningEs": "muchacho; hijo mayor",
+    "onyomi": "ダン ナン",
+    "kunyomi": "おとこ お",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "一男",
+    "representativeWordReading": "いちなん",
+    "additionalVocab": [
+      {
+        "word": "次男",
+        "reading": "じなん",
+        "meaning": "segundo hijo (varón)"
+      },
+      {
+        "word": "大男",
+        "reading": "おおおとこ",
+        "meaning": "hombre gigante; gigante"
+      },
+      {
+        "word": "男",
+        "reading": "おとこ",
+        "meaning": "hombre; varón"
+      }
+    ]
+  },
+  {
+    "kanji": "白",
+    "reading": "めいはく",
+    "meaningEs": "obvio; evidente",
+    "onyomi": "ハク ビャク",
+    "kunyomi": "しろ しら- しろ.い",
+    "partOfSpeech": "adj-na",
+    "level": "n5",
+    "representativeWord": "明白",
+    "representativeWordReading": "めいはく",
+    "additionalVocab": [
+      {
+        "word": "空白",
+        "reading": "くうはく",
+        "meaning": "espacio en blanco"
+      },
+      {
+        "word": "潔白",
+        "reading": "けっぱく",
+        "meaning": "pureza; inocencia"
+      },
+      {
+        "word": "紅白",
+        "reading": "こうはく",
+        "meaning": "rojo y blanco; partes oponentes"
+      }
+    ]
+  },
+  {
+    "kanji": "百",
+    "reading": "なんびゃく",
+    "meaningEs": "cientos de",
+    "onyomi": "ヒャク ビャク",
+    "kunyomi": "もも",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "何百",
+    "representativeWordReading": "なんびゃく",
+    "additionalVocab": [
+      {
+        "word": "八百屋",
+        "reading": "やおや",
+        "meaning": "verdulería; verdulero"
+      },
+      {
+        "word": "百",
+        "reading": "ひゃく",
+        "meaning": "100; cien"
+      },
+      {
+        "word": "百貨店",
+        "reading": "ひゃっかてん",
+        "meaning": "grandes almacenes; supermercado; hipermercado"
+      }
+    ]
+  },
+  {
+    "kanji": "目",
+    "reading": "ひとめ",
+    "meaningEs": "una oejada; un vistazo; un vislumbre; vista completa; vista de ojo de pájaro",
+    "onyomi": "モク ボク",
+    "kunyomi": "め -め ま-",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "一目",
+    "representativeWordReading": "ひとめ",
+    "additionalVocab": [
+      {
+        "word": "引け目",
+        "reading": "ひけめ",
+        "meaning": "debilidad; echarse atrás"
+      },
+      {
+        "word": "演目",
+        "reading": "えんもく",
+        "meaning": "programa (título) musical"
+      },
+      {
+        "word": "項目",
+        "reading": "こうもく",
+        "meaning": "ítem; artículo"
+      }
+    ]
+  },
+  {
+    "kanji": "社",
+    "reading": "かいしゃ",
+    "meaningEs": "empresa; compañía; corporación",
+    "onyomi": "シャ",
+    "kunyomi": "やしろ",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "会社",
+    "representativeWordReading": "かいしゃ",
+    "additionalVocab": [
+      {
+        "word": "貴社",
+        "reading": "きしゃ",
+        "meaning": "su empresa; su compañía"
+      },
+      {
+        "word": "結社",
+        "reading": "けっしゃ",
+        "meaning": "asociación; sociedad"
+      },
+      {
+        "word": "公社",
+        "reading": "こうしゃ",
+        "meaning": "corporación pública"
+      }
+    ]
+  },
+  {
+    "kanji": "空",
+    "reading": "うちゅうくうかん",
+    "meaningEs": "vacío espacial; vacío del espacio",
+    "onyomi": "クウ",
+    "kunyomi": "そら あ.く あ.き あ.ける から す.く す.かす むな.しい",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "宇宙空間",
+    "representativeWordReading": "うちゅうくうかん",
+    "additionalVocab": [
+      {
+        "word": "架空",
+        "reading": "かくう",
+        "meaning": "aéreo; elevado; ficticio; imaginario"
+      },
+      {
+        "word": "空",
+        "reading": "から",
+        "meaning": "vacío"
+      },
+      {
+        "word": "空き地",
+        "reading": "あきち",
+        "meaning": "yermo"
+      }
+    ]
+  },
+  {
+    "kanji": "立",
+    "reading": "おうりつ",
+    "meaningEs": "real (de realeza)",
+    "onyomi": "リツ リュウ リットル",
+    "kunyomi": "た.つ -た.つ た.ち- た.てる -た.てる た.て- たて- -た.て -だ.て -だ.てる",
+    "partOfSpeech": "adj-no n",
+    "level": "n5",
+    "representativeWord": "王立",
+    "representativeWordReading": "おうりつ",
+    "additionalVocab": [
+      {
+        "word": "確立",
+        "reading": "かくりつ",
+        "meaning": "establecimiento; institución; instauración; creación"
+      },
+      {
+        "word": "顔立ち",
+        "reading": "かおだち",
+        "meaning": "cara; rasgos; facciones; rostro"
+      },
+      {
+        "word": "起立",
+        "reading": "きりつ",
+        "meaning": "erguimiento; enderezo"
+      }
+    ]
+  },
+  {
+    "kanji": "耳",
+    "reading": "みみ",
+    "meaningEs": "oreja",
+    "onyomi": "ジ",
+    "kunyomi": "みみ",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "耳",
+    "representativeWordReading": "みみ",
+    "additionalVocab": [
+      {
+        "word": "耳障り",
+        "reading": "みみざわり",
+        "meaning": "sonido chocante"
+      },
+      {
+        "word": "耳鼻科",
+        "reading": "じびか",
+        "meaning": "otorrinolaringología"
+      },
+      {
+        "word": "中耳",
+        "reading": "ちゅうじ",
+        "meaning": "oído medio; tímpano"
+      }
+    ]
+  },
+  {
+    "kanji": "聞",
+    "reading": "けんぶん",
+    "meaningEs": "información; conocimiento; experiencia",
+    "onyomi": "ブン モン",
+    "kunyomi": "き.く き.こえる",
+    "partOfSpeech": "n vs vt",
+    "level": "n5",
+    "representativeWord": "見聞",
+    "representativeWordReading": "けんぶん",
+    "additionalVocab": [
+      {
+        "word": "醜聞",
+        "reading": "しゅうぶん",
+        "meaning": "escándalo"
+      },
+      {
+        "word": "新聞",
+        "reading": "しんぶん",
+        "meaning": "periódico; rotativo; diario"
+      },
+      {
+        "word": "新聞紙",
+        "reading": "しんぶんし",
+        "meaning": "prensa; periódico"
+      }
+    ]
+  },
+  {
+    "kanji": "花",
+    "reading": "ひばな",
+    "meaningEs": "chispa",
+    "onyomi": "カ ケ",
+    "kunyomi": "はな",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "火花",
+    "representativeWordReading": "ひばな",
+    "additionalVocab": [
+      {
+        "word": "花",
+        "reading": "はな",
+        "meaning": "flor; flor; pétalo"
+      },
+      {
+        "word": "花びら",
+        "reading": "はなびら",
+        "meaning": "pétalo (de una flor)"
+      },
+      {
+        "word": "花嫁",
+        "reading": "はなよめ",
+        "meaning": "novia (casamiento)"
+      }
+    ]
+  },
+  {
+    "kanji": "行",
+    "reading": "いこう",
+    "meaningEs": "transición; migración",
+    "onyomi": "コウ ギョウ アン",
+    "kunyomi": "い.く ゆ.く -ゆ.き -ゆき -い.き -いき おこな.う おこ.なう",
+    "partOfSpeech": "n vs vt vi",
+    "level": "n5",
+    "representativeWord": "移行",
+    "representativeWordReading": "いこう",
+    "additionalVocab": [
+      {
+        "word": "一方通行",
+        "reading": "いっぽうつうこう",
+        "meaning": "tráfico de un sentido"
+      },
+      {
+        "word": "宇宙飛行士",
+        "reading": "うちゅうひこうし",
+        "meaning": "astronauta"
+      },
+      {
+        "word": "運行",
+        "reading": "うんこう",
+        "meaning": "rotación; giro; revolución"
+      }
+    ]
+  },
+  {
+    "kanji": "西",
+    "reading": "かんさい",
+    "meaningEs": "región de Kansai",
+    "onyomi": "セイ サイ ス",
+    "kunyomi": "にし",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "関西",
+    "representativeWordReading": "かんさい",
+    "additionalVocab": [
+      {
+        "word": "西",
+        "reading": "にし",
+        "meaning": "oeste; occidente; poniente"
+      },
+      {
+        "word": "西ドイツ",
+        "reading": "にしドイツ",
+        "meaning": "Alemania Occidental"
+      },
+      {
+        "word": "西欧",
+        "reading": "せいおう",
+        "meaning": "Europa occidental"
+      }
+    ]
+  },
+  {
+    "kanji": "見",
+    "reading": "いけん",
+    "meaningEs": "aconsejar; advertir; avisar; amonestar; opinión; vista",
+    "onyomi": "ケン",
+    "kunyomi": "み.る み.える み.せる",
+    "partOfSpeech": "n vs vt vi",
+    "level": "n5",
+    "representativeWord": "意見",
+    "representativeWordReading": "いけん",
+    "additionalVocab": [
+      {
+        "word": "一見",
+        "reading": "いっけん",
+        "meaning": "mira; vistazo; ojeada"
+      },
+      {
+        "word": "下見",
+        "reading": "したみ",
+        "meaning": "inspección; reconocimiento; control; examen; supervisión"
+      },
+      {
+        "word": "花見",
+        "reading": "はなみ",
+        "meaning": "vista de la flor; ver los cerezos florecer"
+      }
+    ]
+  },
+  {
+    "kanji": "言",
+    "reading": "ゆいごん",
+    "meaningEs": "voluntad; testamento; ultima petición",
+    "onyomi": "ゲン ゴン",
+    "kunyomi": "い.う こと",
+    "partOfSpeech": "n vs vt vi",
+    "level": "n5",
+    "representativeWord": "遺言",
+    "representativeWordReading": "ゆいごん",
+    "additionalVocab": [
+      {
+        "word": "過言",
+        "reading": "かごん",
+        "meaning": "exageración; exceso verbal"
+      },
+      {
+        "word": "狂言",
+        "reading": "きょうげん",
+        "meaning": "\"kyôgen\": farsa teatral; farsa; simulación; fingimiento"
+      },
+      {
+        "word": "言い回し",
+        "reading": "いいまわし",
+        "meaning": "forma de expresarse; dicción; expresión"
+      }
+    ]
+  },
+  {
+    "kanji": "話",
+    "reading": "おはなしちゅう",
+    "meaningEs": "ocupado (al teléfono)",
+    "onyomi": "ワ",
+    "kunyomi": "はな.す はなし",
+    "partOfSpeech": "adj-no",
+    "level": "n5",
+    "representativeWord": "お話中",
+    "representativeWordReading": "おはなしちゅう",
+    "additionalVocab": [
+      {
+        "word": "逸話",
+        "reading": "いつわ",
+        "meaning": "anécdota"
+      },
+      {
+        "word": "会話",
+        "reading": "かいわ",
+        "meaning": "conversación; plática; conversar; charlar; departir; dialogar; hablar"
+      },
+      {
+        "word": "公衆電話",
+        "reading": "こうしゅうでんわ",
+        "meaning": "teléfono público"
+      }
+    ]
+  },
+  {
+    "kanji": "語",
+    "reading": "いんご",
+    "meaningEs": "argot; jerga; jerigonza; germanía",
+    "onyomi": "ゴ",
+    "kunyomi": "かた.る かた.らう",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "隠語",
+    "representativeWordReading": "いんご",
+    "additionalVocab": [
+      {
+        "word": "英語",
+        "reading": "えいご",
+        "meaning": "Idioma Inglés; lengua inglesa"
+      },
+      {
+        "word": "外国語",
+        "reading": "がいこくご",
+        "meaning": "idioma extranjero; lengua extranjera"
+      },
+      {
+        "word": "外来語",
+        "reading": "がいらいご",
+        "meaning": "gairaigo (palabra japonesa que es préstamo lingüístico de una lengua occidental)"
+      }
+    ]
+  },
+  {
+    "kanji": "読",
+    "reading": "あいどく",
+    "meaningEs": "leer con placer",
+    "onyomi": "ドク トク トウ",
+    "kunyomi": "よ.む -よ.み",
+    "partOfSpeech": "n vs vt",
+    "level": "n5",
+    "representativeWord": "愛読",
+    "representativeWordReading": "あいどく",
+    "additionalVocab": [
+      {
+        "word": "解読",
+        "reading": "かいどく",
+        "meaning": "descifrar; descodificar"
+      },
+      {
+        "word": "句読点",
+        "reading": "くとうてん",
+        "meaning": "punto final"
+      },
+      {
+        "word": "購読",
+        "reading": "こうどく",
+        "meaning": "suscripción (e.g. revista)"
+      }
+    ]
+  },
+  {
+    "kanji": "買",
+    "reading": "こうばい",
+    "meaningEs": "compra; adquisición",
+    "onyomi": "バイ",
+    "kunyomi": "か.う",
+    "partOfSpeech": "n vs vt",
+    "level": "n5",
+    "representativeWord": "購買",
+    "representativeWordReading": "こうばい",
+    "additionalVocab": [
+      {
+        "word": "購買力",
+        "reading": "こうばいりょく",
+        "meaning": "poder de compra"
+      },
+      {
+        "word": "仲買",
+        "reading": "なかがい",
+        "meaning": "corretaje; comisionista"
+      },
+      {
+        "word": "買い入れる",
+        "reading": "かいいれる",
+        "meaning": "comprar; adquirir"
+      }
+    ]
+  },
+  {
+    "kanji": "足",
+    "reading": "いっそく",
+    "meaningEs": "par (calzado)",
+    "onyomi": "ソク",
+    "kunyomi": "あし た.りる た.る た.す",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "一足",
+    "representativeWordReading": "いっそく",
+    "additionalVocab": [
+      {
+        "word": "遠足",
+        "reading": "えんそく",
+        "meaning": "excursión; viaje"
+      },
+      {
+        "word": "駆け足",
+        "reading": "かけあし",
+        "meaning": "galope; algo hecho a prisas"
+      },
+      {
+        "word": "手足",
+        "reading": "てあし",
+        "meaning": "manos y pies; extremidades"
+      }
+    ]
+  },
+  {
+    "kanji": "車",
+    "reading": "げしゃ",
+    "meaningEs": "descenso de un autobús o cualquier otro tipo de vehículo",
+    "onyomi": "シャ",
+    "kunyomi": "くるま",
+    "partOfSpeech": "n vs vi",
+    "level": "n5",
+    "representativeWord": "下車",
+    "representativeWordReading": "げしゃ",
+    "additionalVocab": [
+      {
+        "word": "貨車",
+        "reading": "かしゃ",
+        "meaning": "vagón de carga; camión de carga"
+      },
+      {
+        "word": "外車",
+        "reading": "がいしゃ",
+        "meaning": "automóvil extranjero"
+      },
+      {
+        "word": "機関車",
+        "reading": "きかんしゃ",
+        "meaning": "locomotora"
+      }
+    ]
+  },
+  {
+    "kanji": "週",
+    "reading": "いっしゅうかん",
+    "meaningEs": "una semana",
+    "onyomi": "シュウ",
+    "kunyomi": "",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "一週間",
+    "representativeWordReading": "いっしゅうかん",
+    "additionalVocab": [
+      {
+        "word": "今週",
+        "reading": "こんしゅう",
+        "meaning": "esta semana"
+      },
+      {
+        "word": "週",
+        "reading": "しゅう",
+        "meaning": "semana"
+      },
+      {
+        "word": "週刊",
+        "reading": "しゅうかん",
+        "meaning": "publicación semanal"
+      }
+    ]
+  },
+  {
+    "kanji": "道",
+    "reading": "えんどう",
+    "meaningEs": "borde del camino; lado del camino",
+    "onyomi": "ドウ トウ",
+    "kunyomi": "みち いう",
+    "partOfSpeech": "n adj-no",
+    "level": "n5",
+    "representativeWord": "沿道",
+    "representativeWordReading": "えんどう",
+    "additionalVocab": [
+      {
+        "word": "横断歩道",
+        "reading": "おうだんほどう",
+        "meaning": "paso de peatones"
+      },
+      {
+        "word": "横道",
+        "reading": "よこみち",
+        "meaning": "vereda; desviación (del tema principal)"
+      },
+      {
+        "word": "下水道",
+        "reading": "げすいどう",
+        "meaning": "alcantarillado"
+      }
+    ]
+  },
+  {
+    "kanji": "金",
+    "reading": "おかね",
+    "meaningEs": "dinero",
+    "onyomi": "キン コン ゴン",
+    "kunyomi": "かね かな- -がね",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "お金",
+    "representativeWordReading": "おかね",
+    "additionalVocab": [
+      {
+        "word": "一時金",
+        "reading": "いちじきん",
+        "meaning": "gran suma; plus; pago aislado"
+      },
+      {
+        "word": "黄金",
+        "reading": "おうごん",
+        "meaning": "oro"
+      },
+      {
+        "word": "黄金時代",
+        "reading": "おうごんじだい",
+        "meaning": "edad de oro"
+      }
+    ]
+  },
+  {
+    "kanji": "長",
+    "reading": "いいんちょう",
+    "meaningEs": "presidente del comité",
+    "onyomi": "チョウ",
+    "kunyomi": "なが.い おさ",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "委員長",
+    "representativeWordReading": "いいんちょう",
+    "additionalVocab": [
+      {
+        "word": "医長",
+        "reading": "いちょう",
+        "meaning": "director médico; jefe médico"
+      },
+      {
+        "word": "院長",
+        "reading": "いんちょう",
+        "meaning": "director"
+      },
+      {
+        "word": "駅長",
+        "reading": "えきちょう",
+        "meaning": "jefe de estación"
+      }
+    ]
+  },
+  {
+    "kanji": "間",
+    "reading": "いっしゅうかん",
+    "meaningEs": "una semana",
+    "onyomi": "カン ケン",
+    "kunyomi": "あいだ ま あい",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "一週間",
+    "representativeWordReading": "いっしゅうかん",
+    "additionalVocab": [
+      {
+        "word": "宇宙空間",
+        "reading": "うちゅうくうかん",
+        "meaning": "vacío espacial; vacío del espacio"
+      },
+      {
+        "word": "垣間見る",
+        "reading": "かいまみる",
+        "meaning": "echar un vistazo; echar una ojeada"
+      },
+      {
+        "word": "間",
+        "reading": "あいだ",
+        "meaning": "espacio; intervalo; distancia (entre cuerpos); intervalo; lapso; espacio; combinación"
+      }
+    ]
+  },
+  {
+    "kanji": "雨",
+    "reading": "あめ",
+    "meaningEs": "lluvia",
+    "onyomi": "ウ",
+    "kunyomi": "あめ あま- -さめ",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "雨",
+    "representativeWordReading": "あめ",
+    "additionalVocab": [
+      {
+        "word": "雨雲",
+        "reading": "あまぐも",
+        "meaning": "nube de lluvia; nimboestrato"
+      },
+      {
+        "word": "雨具",
+        "reading": "あまぐ",
+        "meaning": "impermeable; gabardina"
+      },
+      {
+        "word": "雨戸",
+        "reading": "あまど",
+        "meaning": "puerta corrediza a prueba de tormentas"
+      }
+    ]
+  },
+  {
+    "kanji": "電",
+    "reading": "かでん",
+    "meaningEs": "electrónica de consumo",
+    "onyomi": "デン",
+    "kunyomi": "",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "家電",
+    "representativeWordReading": "かでん",
+    "additionalVocab": [
+      {
+        "word": "乾電池",
+        "reading": "かんでんち",
+        "meaning": "pila; batería"
+      },
+      {
+        "word": "公衆電話",
+        "reading": "こうしゅうでんわ",
+        "meaning": "teléfono público"
+      },
+      {
+        "word": "終電",
+        "reading": "しゅうでん",
+        "meaning": "último tren"
+      }
+    ]
+  },
+  {
+    "kanji": "食",
+    "reading": "いしょくじゅう",
+    "meaningEs": "necesidades de la vida (comida; ropa; etc.)",
+    "onyomi": "ショク ジキ",
+    "kunyomi": "く.う く.らう た.べる は.む",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "衣食住",
+    "representativeWordReading": "いしょくじゅう",
+    "additionalVocab": [
+      {
+        "word": "飲食",
+        "reading": "いんしょく",
+        "meaning": "comida y bebida; comiendo y bebiendo"
+      },
+      {
+        "word": "会食",
+        "reading": "かいしょく",
+        "meaning": "cena en grupo; banquete; festín"
+      },
+      {
+        "word": "外食",
+        "reading": "がいしょく",
+        "meaning": "comer fuera de casa; alimento ingerido fuera de la casa"
+      }
+    ]
+  },
+  {
+    "kanji": "飲",
+    "reading": "のむ",
+    "meaningEs": "tragar; ingerir; tragar entero; ingerir sin masticar; beber; tragar",
+    "onyomi": "イン オン",
+    "kunyomi": "の.む -の.み",
+    "partOfSpeech": "v5m vt",
+    "level": "n5",
+    "representativeWord": "飲む",
+    "representativeWordReading": "のむ",
+    "additionalVocab": [
+      {
+        "word": "飲酒",
+        "reading": "いんしゅ",
+        "meaning": "alcohol potable (sake) "
+      },
+      {
+        "word": "飲食",
+        "reading": "いんしょく",
+        "meaning": "comida y bebida; comiendo y bebiendo"
+      },
+      {
+        "word": "飲料",
+        "reading": "いんりょう",
+        "meaning": "bebida"
+      }
+    ]
+  },
+  {
+    "kanji": "駅",
+    "reading": "えき",
+    "meaningEs": "estación (ej. autobuses)",
+    "onyomi": "エキ",
+    "kunyomi": "",
+    "partOfSpeech": "n ctr",
+    "level": "n5",
+    "representativeWord": "駅",
+    "representativeWordReading": "えき",
+    "additionalVocab": [
+      {
+        "word": "駅員",
+        "reading": "えきいん",
+        "meaning": "funcionario de estación"
+      },
+      {
+        "word": "駅前",
+        "reading": "えきまえ",
+        "meaning": "frente a la estación"
+      },
+      {
+        "word": "駅長",
+        "reading": "えきちょう",
+        "meaning": "jefe de estación"
+      }
+    ]
+  },
+  {
+    "kanji": "高",
+    "reading": "えんだか",
+    "meaningEs": "elevado precio del yen",
+    "onyomi": "コウ",
+    "kunyomi": "たか.い たか -だか たか.まる たか.める",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "円高",
+    "representativeWordReading": "えんだか",
+    "additionalVocab": [
+      {
+        "word": "高い",
+        "reading": "たかい",
+        "meaning": "alto; elevado"
+      },
+      {
+        "word": "高さ",
+        "reading": "たかさ",
+        "meaning": "altura"
+      },
+      {
+        "word": "高まる",
+        "reading": "たかまる",
+        "meaning": "ascender; hincharse; ser promovido"
+      }
+    ]
+  },
+  {
+    "kanji": "魚",
+    "reading": "さかなや",
+    "meaningEs": "pescadería; vendedor de pescados",
+    "onyomi": "ギョ",
+    "kunyomi": "うお さかな -ざかな",
+    "partOfSpeech": "n",
+    "level": "n5",
+    "representativeWord": "魚屋",
+    "representativeWordReading": "さかなや",
+    "additionalVocab": [
+      {
+        "word": "魚群",
+        "reading": "ぎょぐん",
+        "meaning": "banco pesquero; bandada de peces"
+      },
+      {
+        "word": "魚肉",
+        "reading": "ぎょにく",
+        "meaning": "carne de pescado"
+      },
+      {
+        "word": "魚雷",
+        "reading": "ぎょらい",
+        "meaning": "torpedo"
+      }
+    ]
+  }
+]
