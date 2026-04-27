@@ -92,8 +92,8 @@
 | Plan | Title | Status |
 |------|-------|--------|
 | 03-01 | Furigana Engine & Japanese Text Renderer | ✅ Complete — `b74be59` |
-| 03-02 | Gesture System | ⬜ Not started |
-| 03-03 | Translation Panel | ⬜ Not started |
+| 03-02 | Gesture System & Translation Panel | ✅ Complete — `d89e612` |
+| 03-03 | Reading View Integration | ⬜ Not started |
 
 **Goal:** Build the heart of KamiJi — the reading view with all 7 gestures, the 3-layer furigana/translation engine, and the Translation Panel. This is the highest-complexity phase.
 

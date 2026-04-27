@@ -2,7 +2,7 @@
 
 **Status:** Phase 3 In Progress
 **Current milestone:** v1.0 — Core Reading Experience
-**Last updated:** 2026-04-27 — Phase 3 Plan 01 complete (Furigana Engine & Text Renderer)
+**Last updated:** 2026-04-27 — Phase 3 Plan 02 complete (Gesture System & Translation Panel)
 
 ---
 
@@ -12,7 +12,7 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 
 **Core value:** A user can tap any kanji in a real Japanese story and instantly get its reading and meaning — then mark it as learned in a single gesture — without ever leaving the reading experience.
 
-**Current focus:** Phase 3 — Reading Core, Gestures & Furigana Engine (Plan 01 ✅)
+**Current focus:** Phase 3 — Reading Core, Gestures & Furigana Engine (Plans 01 ✅, 02 ✅)
 
 ---
 
@@ -22,7 +22,7 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 |-------|------|--------|-----------|
 | **1** | Foundation, PWA & Theme System | ✅ Complete (6/6) | RESEARCH, CONTEXT, VALIDATION, 6×PLAN, 6×SUMMARY |
 | **2** | Data Layer & SRS Engine | ✅ Executed | CONTEXT, ASSETS, UI-SPEC, 3xPLAN, 3xSUMMARY |
-| **3** | Reading Core, Gestures & Furigana Engine | 🔄 In Progress (1/? plans) | CONTEXT, 03-01-PLAN, 03-01-SUMMARY |
+| **3** | Reading Core, Gestures & Furigana Engine | 🔄 In Progress (2/? plans) | CONTEXT, 03-01-PLAN, 03-01-SUMMARY, 03-02-PLAN, 03-02-SUMMARY |
 | **4** | Home, Stories & Progression | ⬜ Not Started | — |
 | **5** | Onboarding, Review, Settings & Notifications | ⬜ Not Started | — |
 | **6** | Polish, Performance & Launch Prep | ⬜ Not Started | — |
@@ -69,13 +69,17 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 - `2026-04-27` — Gemini `encryptedKey` is a JSON bundle `{encrypted,salt,iv,pin}` for inline BYOK decryption
 - `2026-04-27` — Model `gemini-3-flash-preview` (new API; `gemini-2.5-*` deprecated)
 - `2026-04-27` — CSS dot indicator uses `var(--color-primary)` (no `--color-accent` in theme)
+- `2026-04-27` — Imported from `motion/react` (package is `motion` v12, not `framer-motion`)
+- `2026-04-27` — `ReactElement` (not `JSX.Element`) for icon type in React 19 TypeScript
+- `2026-04-27` — `GestureCallbacks.onRayoX` includes `HTMLElement` ref for future panel anchoring
+- `2026-04-27` — Ghost-click guard uses capture-phase click listener for reliable interception
 
 ## Next Action
 
-Continue Phase 3 — next plan to execute: **03-02** (Gesture System or Translation Panel).
+Continue Phase 3 — next plan to execute: **03-03**.
 
 ```
-/gsd-execute-phase 3 02
+/gsd-execute-phase 3 03
 ```
 
 ---
