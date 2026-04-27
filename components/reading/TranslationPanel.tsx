@@ -5,7 +5,7 @@
 // Uses motion/react (motion v12) for spring animations.
 
 import { useState, useRef } from 'react';
-import type { SVGProps } from 'react';
+import type { SVGProps, ReactElement } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import Image from 'next/image';
 import type { TranslationResult, EngineError } from '@/lib/engine/types';
@@ -34,7 +34,7 @@ export interface TranslationPanelProps {
 
 type Tab = 'significado' | 'lectura' | 'compuestos';
 
-type IconComponent = (props: SVGProps<SVGSVGElement>) => JSX.Element;
+type IconComponent = (props: SVGProps<SVGSVGElement>) => ReactElement;
 
 const TABS: Array<{ id: Tab; label: string; Icon: IconComponent }> = [
   { id: 'significado', label: 'Significado', Icon: TabSignificadoIcon },
