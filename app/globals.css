@@ -179,6 +179,32 @@ rt.furigana.visible {
   transition: opacity 0.2s ease-in;
 }
 
+/* ─── Kanji interaction targets ─── */
+[data-kanji] {
+  cursor: pointer;
+  position: relative;
+  -webkit-touch-callout: none;   /* Prevent iOS Safari magnifier */
+  user-select: none;
+}
+
+/* Dot indicator: shown on unlearned, interactive kanji */
+[data-kanji][data-interactive="true"]::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-primary);   /* level-aware accent */
+}
+
+/* Hide dot once learned */
+[data-kanji][data-learned="true"]::after {
+  display: none;
+}
+
 /* ============================================================
    BOTTOM NAVIGATION
    ============================================================ */
