@@ -1,8 +1,8 @@
 # STATE: KamiJi (神字)
 
-**Status:** Phase 2 Executed
+**Status:** Phase 3 In Progress
 **Current milestone:** v1.0 — Core Reading Experience
-**Last updated:** 2026-04-26 — Phase 2 execution complete
+**Last updated:** 2026-04-27 — Phase 3 Plan 01 complete (Furigana Engine & Text Renderer)
 
 ---
 
@@ -12,7 +12,7 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 
 **Core value:** A user can tap any kanji in a real Japanese story and instantly get its reading and meaning — then mark it as learned in a single gesture — without ever leaving the reading experience.
 
-**Current focus:** Phase 3 — Reading Core, Gestures & Furigana Engine
+**Current focus:** Phase 3 — Reading Core, Gestures & Furigana Engine (Plan 01 ✅)
 
 ---
 
@@ -22,7 +22,7 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 |-------|------|--------|-----------|
 | **1** | Foundation, PWA & Theme System | ✅ Complete (6/6) | RESEARCH, CONTEXT, VALIDATION, 6×PLAN, 6×SUMMARY |
 | **2** | Data Layer & SRS Engine | ✅ Executed | CONTEXT, ASSETS, UI-SPEC, 3xPLAN, 3xSUMMARY |
-| **3** | Reading Core, Gestures & Furigana Engine | ⬜ Not Started | — |
+| **3** | Reading Core, Gestures & Furigana Engine | 🔄 In Progress (1/? plans) | CONTEXT, 03-01-PLAN, 03-01-SUMMARY |
 | **4** | Home, Stories & Progression | ⬜ Not Started | — |
 | **5** | Onboarding, Review, Settings & Notifications | ⬜ Not Started | — |
 | **6** | Polish, Performance & Launch Prep | ⬜ Not Started | — |
@@ -63,13 +63,20 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 
 ---
 
+## Decisions
+
+- `2026-04-27` — `JLPTLevel` re-exported from `lib/db.ts` in engine `types.ts` (single source of truth)
+- `2026-04-27` — Gemini `encryptedKey` is a JSON bundle `{encrypted,salt,iv,pin}` for inline BYOK decryption
+- `2026-04-27` — Model `gemini-3-flash-preview` (new API; `gemini-2.5-*` deprecated)
+- `2026-04-27` — CSS dot indicator uses `var(--color-primary)` (no `--color-accent` in theme)
+
 ## Next Action
 
-```
-/gsd-discuss-phase 3
-```
+Continue Phase 3 — next plan to execute: **03-02** (Gesture System or Translation Panel).
 
-This will begin context gathering for Phase 3: Reading Core, Gestures & Furigana Engine.
+```
+/gsd-execute-phase 3 02
+```
 
 ---
-*State initialized: 2026-04-24*
+*State initialized: 2026-04-24 | Last updated: 2026-04-27*
