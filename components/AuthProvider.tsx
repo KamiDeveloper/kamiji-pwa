@@ -15,12 +15,28 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-      setInitializing(false);
+    let cancelled = false;
+
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        try {
+          const { restoreProgressFromFirestore } = await import("@/lib/sync/firestore");
+          await restoreProgressFromFirestore(firebaseUser.uid);
+        } catch (err) {
+          console.error("Progress restore failed:", err);
+        }
+      }
+
+      if (!cancelled) {
+        setUser(firebaseUser);
+        setInitializing(false);
+      }
     });
 
-    return () => unsubscribe();
+    return () => {
+      cancelled = true;
+      unsubscribe();
+    };
   }, []);
 
   // Show branded splash while Firebase resolves auth state

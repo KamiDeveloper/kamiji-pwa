@@ -1,4 +1,4 @@
-// app/(app)/dictionary/page.tsx — Dictionary (tab: Diccionario)
+// app/(app)/dictionary/page.tsx - Dictionary (tab: Diccionario)
 export default function DictionaryPage() {
   return (
     <div
@@ -9,7 +9,7 @@ export default function DictionaryPage() {
         Diccionario
       </h1>
       <p style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-body)" }}>
-        Búsqueda de kanji — Fase 2 pendiente
+        La base offline del diccionario quedo lista en la Fase 2. La busqueda manual todavia falta implementarse en la interfaz.
       </p>
     </div>
   );

@@ -82,7 +82,7 @@ export function ReadingView({ story, onBack, encryptedKey }: ReadingViewProps) {
   useGestureSystem(containerRef, {
     onChuleta: session.showChuleta,
     onChuletaGlobal: session.showChuletaGlobal,
-    onRayoX: (kanji: string, _el: HTMLElement) => {
+    onRayoX: (kanji: string) => {
       void session.openRayoX(kanji);
     },
     onSubrayado: (kanjiRange: string[]) => {
@@ -101,7 +101,8 @@ export function ReadingView({ story, onBack, encryptedKey }: ReadingViewProps) {
     <div
       style={{
         position: 'relative',
-        height: '100vh',
+        height: '100%',
+        minHeight: 0,
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
@@ -123,7 +124,7 @@ export function ReadingView({ story, onBack, encryptedKey }: ReadingViewProps) {
         }}
         {...nav.bindSwipe}
         style={{
-          padding: '24px 24px 80px',
+          padding: '24px 24px 96px',
           overflowY: 'auto',
           flex: 1,
           // touchAction pan-y lets the browser handle vertical scrolling
@@ -164,6 +165,7 @@ export function ReadingView({ story, onBack, encryptedKey }: ReadingViewProps) {
             translation={session.translationResult}
             error={session.translationError}
             isLoading={session.isTranslationLoading}
+            actionMessage={session.antiSpamMessage}
             onClose={session.closePanel}
             onSwipeRight={(kanji) => void session.markLearned(kanji)}
             onSwipeLeft={(kanji) => void session.markToReview(kanji)}

@@ -5,6 +5,7 @@
 // Demo story is used until Phase 4 introduces a real story catalogue.
 
 import { useRouter } from 'next/navigation';
+import DictionaryLoader from '@/components/DictionaryLoader';
 import { ReadingView } from './ReadingView';
 import type { Story } from './ReadingView';
 import type { JLPTLevel } from '@/lib/engine/types';
@@ -42,9 +43,11 @@ export function ReadingViewClient({ storyId }: ReadingViewClientProps) {
   const story = resolveStory(storyId);
 
   return (
-    <ReadingView
-      story={story}
-      onBack={() => router.back()}
-    />
+    <DictionaryLoader level={story.level}>
+      <ReadingView
+        story={story}
+        onBack={() => router.back()}
+      />
+    </DictionaryLoader>
   );
 }

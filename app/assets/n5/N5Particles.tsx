@@ -1,4 +1,3 @@
-import React from "react";
 import type { SVGProps } from "react";
 
 // 1. Cherry blossom petal (24x24)

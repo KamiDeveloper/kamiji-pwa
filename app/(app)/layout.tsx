@@ -37,7 +37,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
         flexDirection: "column",
         minHeight: "100svh",
         // Account for bottom nav + iOS safe area
-        paddingBottom: "calc(64px + env(safe-area-inset-bottom))",
+        paddingBottom: "var(--bottom-nav-offset)",
         backgroundColor: "var(--color-bg)",
         position: "relative",
       }}
@@ -48,6 +48,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
         id="app-main"
         style={{
           flex: 1,
+          minHeight: 0,
           overflowY: "auto",
           overscrollBehavior: "contain",
         }}

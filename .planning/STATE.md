@@ -1,8 +1,22 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: executing
+last_updated: "2026-05-19T06:41:46.285Z"
+progress:
+  total_phases: 6
+  completed_phases: 3
+  total_plans: 17
+  completed_plans: 12
+  percent: 50
+---
+
 # STATE: KamiJi (神字)
 
-**Status:** Phase 3 Complete ✅
+**Status:** Ready to execute
 **Current milestone:** v1.0 — Core Reading Experience
-**Last updated:** 2026-04-27 — Phase 3 Plan 03 complete (Reading View & Page Navigation) — Phase 3 fully complete
+**Last updated:** 2026-05-19 - Phase 4 planned (5 plans created for Home, Stories & Progression)
 
 ---
 
@@ -23,7 +37,7 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 | **1** | Foundation, PWA & Theme System | ✅ Complete (6/6) | RESEARCH, CONTEXT, VALIDATION, 6×PLAN, 6×SUMMARY |
 | **2** | Data Layer & SRS Engine | ✅ Executed | CONTEXT, ASSETS, UI-SPEC, 3xPLAN, 3xSUMMARY |
 | **3** | Reading Core, Gestures & Furigana Engine | ✅ Complete (3/3) | CONTEXT, 03-01-PLAN, 03-01-SUMMARY, 03-02-PLAN, 03-02-SUMMARY, 03-03-PLAN, 03-03-SUMMARY |
-| **4** | Home, Stories & Progression | ⬜ Not Started | — |
+| **4** | Home, Stories & Progression | Ready to execute | CONTEXT, UI-SPEC, ASSETS, 5xPLAN |
 | **5** | Onboarding, Review, Settings & Notifications | ⬜ Not Started | — |
 | **6** | Polish, Performance & Launch Prep | ⬜ Not Started | — |
 
@@ -81,7 +95,7 @@ See: `.planning/PROJECT.md` (updated 2026-04-24)
 
 ## Next Action
 
-Phase 3 complete. Start Phase 4 — Home Screen, Story System & Progression.
+Phase 4 planned. Execute Home Screen, Story System & Progression.
 
 ```
 /gsd-execute-phase 4
@@ -97,4 +111,4 @@ Phase 3 complete. Start Phase 4 — Home Screen, Story System & Progression.
 | 3 | 03 | ~35 min | 8 | 8 created, 2 modified |
 
 ---
-*State initialized: 2026-04-24 | Last updated: 2026-04-27 | Phase 3 complete*
+*State initialized: 2026-04-24 | Last updated: 2026-05-19 | Phase 4 planned*

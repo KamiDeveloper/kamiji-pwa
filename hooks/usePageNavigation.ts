@@ -34,8 +34,9 @@ export function usePageNavigation({
   onPageChange,
   isPanelOpen = false,
 }: UsePageNavigationProps): UsePageNavigationReturn {
+  const maxPage = Math.max(0, pages.length - 1);
   const [currentPage, setCurrentPage] = useState(() =>
-    Math.max(0, Math.min(initialPage, Math.max(0, pages.length - 1)))
+    Math.max(0, Math.min(initialPage, maxPage))
   );
 
   // Debounce flag — prevents multi-page jumps (300ms window)
@@ -47,28 +48,30 @@ export function usePageNavigation({
 
   const goNext = useCallback(() => {
     setCurrentPage((p) => {
-      const next = Math.min(p + 1, pages.length - 1);
+      const next = Math.min(p + 1, maxPage);
       onPageChange?.(next);
       return next;
     });
-  }, [pages.length, onPageChange]);
+  }, [maxPage, onPageChange]);
 
   const goPrev = useCallback(() => {
     setCurrentPage((p) => {
-      const prev = Math.max(p - 1, 0);
+      const prev = Math.max(Math.min(p, maxPage) - 1, 0);
       onPageChange?.(prev);
       return prev;
     });
-  }, [onPageChange]);
+  }, [maxPage, onPageChange]);
 
   const goTo = useCallback(
     (page: number) => {
-      const clamped = Math.max(0, Math.min(page, pages.length - 1));
+      const clamped = Math.max(0, Math.min(page, maxPage));
       setCurrentPage(clamped);
       onPageChange?.(clamped);
     },
-    [pages.length, onPageChange]
+    [maxPage, onPageChange]
   );
+
+  const safeCurrentPage = Math.min(currentPage, maxPage);
 
   const onPointerDown = useCallback((e: React.PointerEvent) => {
     swipeStartX.current = e.clientX;
@@ -76,7 +79,7 @@ export function usePageNavigation({
   }, []);
 
   // No-op: swipe evaluation happens at pointerup
-  const onPointerMove = useCallback((_e: React.PointerEvent) => {}, []);
+  const onPointerMove = useCallback(() => {}, []);
 
   const onPointerUp = useCallback(
     (e: React.PointerEvent) => {
@@ -108,27 +111,27 @@ export function usePageNavigation({
         if (dx < 0) {
           // Swipe left → next page
           setCurrentPage((p) => {
-            const next = Math.min(p + 1, pages.length - 1);
+            const next = Math.min(p + 1, maxPage);
             onPageChange?.(next);
             return next;
           });
         } else {
           // Swipe right → previous page
           setCurrentPage((p) => {
-            const prev = Math.max(p - 1, 0);
+            const prev = Math.max(Math.min(p, maxPage) - 1, 0);
             onPageChange?.(prev);
             return prev;
           });
         }
       }
     },
-    [isPanelOpen, pages.length, onPageChange]
+    [isPanelOpen, maxPage, onPageChange]
   );
 
   return {
-    currentPage,
+    currentPage: safeCurrentPage,
     totalPages: pages.length,
-    pageContent: pages[currentPage] ?? '',
+    pageContent: pages[safeCurrentPage] ?? '',
     goNext,
     goPrev,
     goTo,

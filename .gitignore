@@ -36,17 +36,22 @@ yarn-error.log*
 # vercel
 .vercel
 
+# docs
+.planning/
+
+docs/
+
+# Codex
+.codex/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
-# Documents
-.planning/
-docs/
-
 # Dictionary build pipeline (raw Yomitan data + gap reports)
 scripts/raw/
 scripts/gaps/
+scripts/jlpt-official-kanjis/
 
 # Serwist / PWA build artifacts
 public/sw.js

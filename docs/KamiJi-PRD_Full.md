@@ -3580,7 +3580,7 @@ service cloud.firestore {
 | ----------------------- | ------------------------------------- | ------------------------------------------------------------------------------------ |
 | **Email**               | Firestore (del Google OAuth)          | Solo el propio usuario                                                               |
 | **NickName**            | Firestore                             | Solo el propio usuario (V1; en V2 podría ser público si se añaden features sociales) |
-| **API Key**             | Firestore (cifrada AES-256-GCM)       | Descifrada solo en el servidor para llamadas API                                     |
+| **API Key**             | IndexedDB + Firestore (cifrada AES-256-GCM) | Solo se sincroniza cifrada; el texto plano nunca se persiste fuera del dispositivo |
 | **Progreso de kanji**   | Firestore + IndexedDB local           | Solo el propio usuario                                                               |
 | **Historial de repaso** | Firestore + IndexedDB local           | Solo el propio usuario                                                               |
 | **Consultas a IA**      | Cache temporal en IndexedDB (30 días) | Solo local en el dispositivo del usuario                                             |

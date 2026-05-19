@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 3,
+  "generatedAt": "2026-05-19T04:37:53.641Z",
+  "sources": {
+    "kanjidic": "scripts/raw/kanjidic",
+    "jmdict": "scripts/raw/jmdict",
+    "officialJlptCsv": "scripts/jlpt-official-kanjis/jlpt_vocab.csv"
+  },
+  "levels": {
+    "n5": {
+      "file": "n5-jmdict.json",
+      "entries": 888,
+      "checksum": "c5c22dc423748f1ec844690f79bb4fd9edd9ad9681409006ef1c5d08d40f9bef",
+      "gaps": 0
+    },
+    "n4": {
+      "file": "n4-jmdict.json",
+      "entries": 798,
+      "checksum": "7df7077b03b5481eb843ecac82c1ada16d08540edbe811c59dbfb8f8094d2ed2",
+      "gaps": 0
+    },
+    "n3": {
+      "file": "n3-jmdict.json",
+      "entries": 2200,
+      "checksum": "8ba301aab762e96a83425b2fa13d095a50e2386f4894446149fbbc0b30e9ea42",
+      "gaps": 0
+    },
+    "n2": {
+      "file": "n2-jmdict.json",
+      "entries": 1789,
+      "checksum": "4f70cd4c4629838a247df545da6160dc9d6b9762adf88239823e15be9b99d299",
+      "gaps": 0
+    },
+    "n1": {
+      "file": "n1-jmdict.json",
+      "entries": 2958,
+      "checksum": "7a23019afa2ffd8356c146701653141207315380988da919fa5ce9a4a8194f6c",
+      "gaps": 71
+    }
+  }
+}

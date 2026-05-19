@@ -8,6 +8,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { db } from '@/lib/db';
 import { createKanji, processReview, Rating } from '@/lib/srs/fsrs';
 import { furiganaEngine } from '@/lib/engine/furigana-engine';
+import { useAuth } from '@/contexts/AuthContext';
 import type { JLPTLevel } from '@/lib/db';
 import type { TranslationResult, EngineError } from '@/lib/engine/types';
 
@@ -26,6 +27,7 @@ export interface UseReadingSessionReturn {
   translationError?: EngineError;
   isTranslationLoading: boolean;
   kanjiDetailOpen: string | null;
+  antiSpamMessage: string | null;
 
   showChuleta: (kanji: string) => void;
   showChuletaGlobal: () => void;
@@ -43,10 +45,10 @@ const CHULETA_TIMEOUT_MS = 5_000;
 const CHULETA_GLOBAL_TIMEOUT_MS = 60_000;
 
 export function useReadingSession({
-  storyId: _storyId,
   level,
   encryptedKey,
 }: UseReadingSessionProps): UseReadingSessionReturn {
+  const { user } = useAuth();
   const [learnedKanji, setLearnedKanji] = useState<Set<string>>(new Set());
   const [visibleFurigana, setVisibleFurigana] = useState<Set<string>>(new Set());
   const [allFuriganaVisible, setAllFuriganaVisible] = useState(false);
@@ -55,11 +57,13 @@ export function useReadingSession({
   const [translationError, setTranslationError] = useState<EngineError | undefined>();
   const [isTranslationLoading, setIsTranslationLoading] = useState(false);
   const [kanjiDetailOpen, setKanjiDetailOpen] = useState<string | null>(null);
+  const [antiSpamMessage, setAntiSpamMessage] = useState<string | null>(null);
 
   // Per-kanji auto-hide timers for La Chuleta
   const furiganaTimers = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
   // Global furigana auto-hide timer
   const globalTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const recentLearnEvents = useRef<Array<{ timestamp: number }>>([]);
 
   // ── Load learned kanji on mount ──────────────────────────────────────────
   useEffect(() => {
@@ -166,13 +170,33 @@ export function useReadingSession({
     setTranslationResult(undefined);
     setTranslationError(undefined);
     setIsTranslationLoading(false);
+    setAntiSpamMessage(null);
   }, []);
 
   // ── SRS: Mark as learned (Rating.Good) ───────────────────────────────────
   const markLearned = useCallback(
     async (kanji: string) => {
+      const { isAntiSpam } = await import('@/lib/srs/queue');
+      const fiveMinutesAgo = Date.now() - 5 * 60 * 1000;
+      const nextLearnEvents = [
+        ...recentLearnEvents.current.filter((event) => event.timestamp > fiveMinutesAgo),
+        { timestamp: Date.now() },
+      ];
+
+      if (isAntiSpam(nextLearnEvents)) {
+        recentLearnEvents.current = nextLearnEvents;
+        setAntiSpamMessage('Pausa breve: demasiados kanji marcados en pocos minutos. Repasa con calma antes de seguir.');
+        return;
+      }
+
+      recentLearnEvents.current = nextLearnEvents;
+      setAntiSpamMessage(null);
+
       try {
-        const existing = await db.kanji.where('kanjiChar').equals(kanji).first();
+        const existing = await db.kanji
+          .where('[kanjiChar+level]')
+          .equals([kanji, level])
+          .first();
         let id: number;
         if (existing?.id !== undefined) {
           id = existing.id;
@@ -180,6 +204,12 @@ export function useReadingSession({
           id = await createKanji(kanji, level);
         }
         await processReview(id, Rating.Good);
+        if (user) {
+          const { recordUserStudyProgress } = await import('@/lib/progress');
+          const { scheduleSync } = await import('@/lib/sync/debounce');
+          await recordUserStudyProgress(user.uid, level);
+          scheduleSync(user.uid, level);
+        }
         setLearnedKanji((prev) => {
           const next = new Set(prev);
           next.add(kanji);
@@ -190,14 +220,17 @@ export function useReadingSession({
       }
       closePanel();
     },
-    [level, closePanel]
+    [level, user, closePanel]
   );
 
   // ── SRS: Mark to review (Rating.Again) ───────────────────────────────────
   const markToReview = useCallback(
     async (kanji: string) => {
       try {
-        const existing = await db.kanji.where('kanjiChar').equals(kanji).first();
+        const existing = await db.kanji
+          .where('[kanjiChar+level]')
+          .equals([kanji, level])
+          .first();
         let id: number;
         if (existing?.id !== undefined) {
           id = existing.id;
@@ -205,12 +238,18 @@ export function useReadingSession({
           id = await createKanji(kanji, level);
         }
         await processReview(id, Rating.Again);
+        if (user) {
+          const { recordUserStudyProgress } = await import('@/lib/progress');
+          const { scheduleSync } = await import('@/lib/sync/debounce');
+          await recordUserStudyProgress(user.uid, level);
+          scheduleSync(user.uid, level);
+        }
       } catch {
         // Ignore DB errors silently
       }
       closePanel();
     },
-    [level, closePanel]
+    [level, user, closePanel]
   );
 
   // ── KanjiDetail overlay ───────────────────────────────────────────────────
@@ -231,6 +270,7 @@ export function useReadingSession({
     translationError,
     isTranslationLoading,
     kanjiDetailOpen,
+    antiSpamMessage,
     showChuleta,
     showChuletaGlobal,
     openRayoX,

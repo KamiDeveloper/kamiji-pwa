@@ -18,8 +18,6 @@ interface JapaneseTextRendererProps {
   allFuriganaVisible: boolean;
   /** Fired when the user taps a kanji */
   onKanjiTap?: (kanji: string) => void;
-  /** Fired when the user long-presses a kanji */
-  onKanjiLongPress?: (kanji: string) => void;
   className?: string;
 }
 
@@ -91,7 +89,6 @@ export function JapaneseTextRenderer({
   visibleFurigana,
   allFuriganaVisible,
   onKanjiTap,
-  onKanjiLongPress,
   className,
 }: JapaneseTextRendererProps) {
   const tokens = parseText(text);

@@ -89,6 +89,35 @@ Responde ÚNICAMENTE con un objeto JSON válido (sin markdown, sin bloques de c�
 Si no hay lecturas on'yomi o kun'yomi, usa arrays vacíos. Incluye hasta 2 palabras adicionales en additionalVocab.`;
 }
 
+function cleanString(value: unknown, fallback = ''): string {
+  return typeof value === 'string' && value.trim() ? value.trim() : fallback;
+}
+
+function cleanStringArray(value: unknown): string[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const cleaned = value
+    .map((item) => cleanString(item))
+    .filter(Boolean);
+  return cleaned.length > 0 ? cleaned : undefined;
+}
+
+function cleanAdditionalVocab(value: unknown): TranslationResult['additionalVocab'] {
+  if (!Array.isArray(value)) return undefined;
+  const cleaned = value
+    .map((item) => {
+      if (!item || typeof item !== 'object') return null;
+      const record = item as Record<string, unknown>;
+      const word = cleanString(record['word']);
+      const reading = cleanString(record['reading']);
+      const meaning = cleanString(record['meaning']);
+      return word && (reading || meaning) ? { word, reading, meaning } : null;
+    })
+    .filter((item): item is { word: string; reading: string; meaning: string } => item !== null)
+    .slice(0, 3);
+
+  return cleaned.length > 0 ? cleaned : undefined;
+}
+
 /**
  * Query the Gemini AI to get a full translation for a kanji character.
  *
@@ -179,22 +208,19 @@ export async function queryGemini(
     throw err;
   }
 
-  const onyomiRaw = parsed['onyomi'];
-  const kunyomiRaw = parsed['kunyomi'];
+  const exampleEs = cleanString(parsed['exampleEs']);
 
   return {
     kanji: kanjiChar,
-    reading: String(parsed['reading'] ?? kanjiChar),
-    meaningEs: String(parsed['meaningEs'] ?? '(sin traducción)'),
+    reading: cleanString(parsed['reading'], kanjiChar),
+    meaningEs: cleanString(parsed['meaningEs'], '(sin traduccion)'),
     source: 'ai',
-    partOfSpeech: typeof parsed['partOfSpeech'] === 'string' ? parsed['partOfSpeech'] : undefined,
-    onyomi: Array.isArray(onyomiRaw) ? (onyomiRaw as string[]) : undefined,
-    kunyomi: Array.isArray(kunyomiRaw) ? (kunyomiRaw as string[]) : undefined,
-    exampleJp: typeof parsed['exampleJp'] === 'string' ? parsed['exampleJp'] : undefined,
-    exampleEs: typeof parsed['exampleEs'] === 'string' ? parsed['exampleEs'] : undefined,
-    contextTranslation: typeof parsed['exampleEs'] === 'string' ? parsed['exampleEs'] : undefined,
-    additionalVocab: Array.isArray(parsed['additionalVocab'])
-      ? (parsed['additionalVocab'] as Array<{ word: string; reading: string; meaning: string }>)
-      : undefined,
+    partOfSpeech: cleanString(parsed['partOfSpeech']) || undefined,
+    onyomi: cleanStringArray(parsed['onyomi']),
+    kunyomi: cleanStringArray(parsed['kunyomi']),
+    exampleJp: cleanString(parsed['exampleJp']) || undefined,
+    exampleEs: exampleEs || undefined,
+    contextTranslation: exampleEs || undefined,
+    additionalVocab: cleanAdditionalVocab(parsed['additionalVocab']),
   };
 }

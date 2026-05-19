@@ -29,6 +29,11 @@
   --shadow-nav: 0 -1px 0 rgba(15, 19, 32, 0.08);
 }
 
+:root {
+  --bottom-nav-height: 64px;
+  --bottom-nav-offset: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom));
+}
+
 /* ─── N5: El Parvulario (Kindergarten) ─── */
 html[data-level="n5"] {
   --color-primary: #FF8F7A;
@@ -157,6 +162,7 @@ body {
 
 ruby {
   ruby-position: over;
+  ruby-align: center;
   display: ruby;
 }
 
@@ -167,7 +173,6 @@ rt.furigana {
   font-size: 0.5em;
   line-height: 1;
   min-height: 0.6em;
-  display: block;
   text-align: center;
   transition: none;
 }
@@ -214,7 +219,7 @@ rt.furigana.visible {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  height: var(--bottom-nav-offset);
   display: flex;
   align-items: center;
   justify-content: space-around;

@@ -41,7 +41,6 @@ export function useGestureSystem(
     let longPressTimer: ReturnType<typeof setTimeout> | null = null;
     let isLongPress = false;
     let longPressKanji: string | null = null;
-    let longPressEl: HTMLElement | null = null;
 
     // Scroll cancellation
     let cancelled = false;
@@ -85,14 +84,13 @@ export function useGestureSystem(
       scannedKanjis.clear();
 
       const el = getKanjiEl(e.target);
-      longPressEl = el;
       longPressKanji = el?.dataset.kanji ?? null;
 
       if (el && longPressKanji) {
+        const pressedKanji = longPressKanji;
         longPressTimer = setTimeout(() => {
           isLongPress = true;
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          cb.current.onRayoX(longPressKanji!, el);
+          cb.current.onRayoX(pressedKanji, el);
         }, 500);
       }
     }
@@ -208,7 +206,7 @@ export function useGestureSystem(
 
     // GESTURE-11: iOS Safari — suppress native context menu on kanji elements
     function onContextMenu(e: Event) {
-      if ((e.target as Element).closest('[data-kanji]')) {
+      if (e.target instanceof Element && e.target.closest('[data-kanji]')) {
         e.preventDefault();
       }
     }

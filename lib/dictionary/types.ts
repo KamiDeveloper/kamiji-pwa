@@ -12,12 +12,27 @@ export interface RawJMdictEntry {
   level: string;                    // "n5" | "n4" | "n3" | "n2" | "n1"
   representativeWord?: string;      // common word using this kanji (e.g. "食べる")
   representativeWordReading?: string; // reading of representative word
+  entryType?: 'kanji' | 'vocabulary';
+  components?: string[];
   additionalVocab?: Array<{         // up to 3 secondary vocab entries
     word: string;
     reading: string;
     meaning: string;
   }>;
   source?: string;                  // "jmdict" | "ai-generated" — provenance tracking
+}
+
+export interface DatasetManifestLevel {
+  file: string;
+  entries: number;
+  checksum?: string;
+  gaps?: number;
+}
+
+export interface DatasetManifest {
+  schemaVersion: number;
+  generatedAt: string;
+  levels: Partial<Record<string, DatasetManifestLevel>>;
 }
 
 export interface LoadProgress {

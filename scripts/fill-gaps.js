@@ -22,9 +22,32 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const GAPS_DIR = path.join(__dirname, 'gaps');
 const OUTPUT_DIR = path.join(__dirname, '..', 'public', 'data');
+
+function sha256(value) {
+  return crypto.createHash('sha256').update(value).digest('hex');
+}
+
+function updateManifest(level, datasetJson, entryCount) {
+  const manifestPath = path.join(OUTPUT_DIR, 'manifest.json');
+  if (!fs.existsSync(manifestPath)) return;
+
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+  manifest.schemaVersion = Math.max(3, Number(manifest.schemaVersion) || 0);
+  manifest.generatedAt = new Date().toISOString();
+  manifest.levels = manifest.levels || {};
+  manifest.levels[level] = {
+    ...(manifest.levels[level] || {}),
+    file: `${level}-jmdict.json`,
+    entries: entryCount,
+    checksum: sha256(datasetJson),
+    gaps: 0,
+  };
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf-8');
+}
 
 // ── Gemini API ─────────────────────────────────────────────
 const apiKey = process.env.GEMINI_API_KEY;
@@ -60,6 +83,17 @@ async function callGemini(apiKey, prompt, responseJsonSchema) {
  */
 async function generateEntries(apiKey, gaps, level) {
   const kanjiList = gaps.map(g => g.kanji).join(', ');
+  const kanjiContext = gaps.map(g => {
+    const officialExamples = Array.isArray(g.officialVocab)
+      ? g.officialVocab
+        .slice(0, 3)
+        .map(v => `${v.expression}${v.reading ? ` (${v.reading})` : ''}${v.meaningEn ? ` = ${v.meaningEn}` : ''}`)
+        .join('; ')
+      : '';
+    const kanjidicMeaning = g.meaningFromKanjidic ? `KANJIDIC meaning: ${g.meaningFromKanjidic}` : '';
+    const officialHint = officialExamples ? `Official JLPT examples: ${officialExamples}` : '';
+    return `- ${g.kanji}: ${[kanjidicMeaning, officialHint].filter(Boolean).join(' | ')}`;
+  }).join('\n');
 
   const responseSchema = {
     type: 'array',
@@ -88,8 +122,12 @@ Target JLPT level: ${level.toUpperCase()} — choose vocabulary appropriate for 
 
 Kanji to process: ${kanjiList}
 
+Available context:
+${kanjiContext}
+
 Rules:
 - Choose the most common, useful word for each kanji at the ${level.toUpperCase()} level
+- Prefer the official JLPT example when it is natural and contains the target kanji
 - Meanings MUST be in Spanish
 - Keep meanings concise (max 3-4 options separated by semicolons)
 - If the kanji itself is commonly used as a standalone word, use that
@@ -127,7 +165,12 @@ async function fillGaps(level, apiKey, dryRun) {
 
   if (dryRun) {
     console.log('  [DRY RUN] Would generate entries for:');
-    gaps.forEach(g => console.log(`    - ${g.kanji}: ${g.meaningFromKanjidic}`));
+    gaps.forEach(g => {
+      const officialExamples = Array.isArray(g.officialVocab)
+        ? g.officialVocab.slice(0, 2).map(v => v.expression).join(', ')
+        : '';
+      console.log(`    - ${g.kanji}: ${g.meaningFromKanjidic || officialExamples || '(no local context)'}`);
+    });
     return;
   }
 
@@ -173,6 +216,7 @@ async function fillGaps(level, apiKey, dryRun) {
       existing.reading = gen.reading || existing.reading;
       existing.meaningEs = gen.meaningEs || existing.meaningEs;
       existing.partOfSpeech = gen.partOfSpeech || existing.partOfSpeech;
+      existing.entryType = 'kanji';
       existing.representativeWord = gen.representativeWord;
       existing.representativeWordReading = gen.reading;
       existing.source = 'ai-generated';
@@ -188,6 +232,7 @@ async function fillGaps(level, apiKey, dryRun) {
         kunyomi: gapEntry?.kunyomi || '',
         partOfSpeech: gen.partOfSpeech || 'unknown',
         level,
+        entryType: 'kanji',
         representativeWord: gen.representativeWord,
         representativeWordReading: gen.reading,
         source: 'ai-generated',
@@ -198,7 +243,9 @@ async function fillGaps(level, apiKey, dryRun) {
 
   // Sort and write
   dataset.sort((a, b) => a.kanji.localeCompare(b.kanji));
-  fs.writeFileSync(dataPath, JSON.stringify(dataset, null, 2), 'utf-8');
+  const datasetJson = JSON.stringify(dataset, null, 2);
+  fs.writeFileSync(dataPath, datasetJson, 'utf-8');
+  updateManifest(level, datasetJson, dataset.length);
 
   // Archive the gaps file
   const filledPath = path.join(GAPS_DIR, `${level}-gaps.filled.json`);

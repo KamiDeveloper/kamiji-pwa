@@ -21,8 +21,8 @@ interface KanjiStoreState {
 
   // Actions
   loadDailyQueue: (level: JLPTLevel) => Promise<void>;
-  learnKanji: (kanjiChar: string, level: JLPTLevel) => Promise<number>;
-  reviewKanji: (kanjiId: number, rating: Rating) => Promise<void>;
+  learnKanji: (kanjiChar: string, level: JLPTLevel, uid?: string) => Promise<number>;
+  reviewKanji: (kanjiId: number, rating: Rating, uid?: string) => Promise<void>;
   setActiveKanji: (kanji: KanjiWithFSRS | null) => void;
   clearError: () => void;
 }
@@ -49,19 +49,35 @@ export const useKanjiStore = create<KanjiStoreState>()((set, get) => ({
     }
   },
 
-  learnKanji: async (kanjiChar: string, level: JLPTLevel): Promise<number> => {
+  learnKanji: async (kanjiChar: string, level: JLPTLevel, uid?: string): Promise<number> => {
     const { createKanji } = await import('@/lib/srs/fsrs');
     const id = await createKanji(kanjiChar, level);
+    if (uid) {
+      const { recordUserStudyProgress } = await import('@/lib/progress');
+      const { scheduleSync } = await import('@/lib/sync/debounce');
+      await recordUserStudyProgress(uid, level);
+      scheduleSync(uid, level);
+    }
     // Refresh queue
     await get().loadDailyQueue(level);
     return id;
   },
 
-  reviewKanji: async (kanjiId: number, rating: Rating): Promise<void> => {
+  reviewKanji: async (kanjiId: number, rating: Rating, uid?: string): Promise<void> => {
     set({ isProcessingReview: true, error: null });
     try {
       const { processReview } = await import('@/lib/srs/fsrs');
       await processReview(kanjiId, rating);
+      if (uid) {
+        const { db } = await import('@/lib/db');
+        const reviewedKanji = await db.kanji.get(kanjiId);
+        if (reviewedKanji) {
+          const { recordUserStudyProgress } = await import('@/lib/progress');
+          const { scheduleSync } = await import('@/lib/sync/debounce');
+          await recordUserStudyProgress(uid, reviewedKanji.level);
+          scheduleSync(uid, reviewedKanji.level);
+        }
+      }
       set({ isProcessingReview: false });
     } catch (err) {
       set({

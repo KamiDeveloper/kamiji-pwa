@@ -21,6 +21,8 @@ export interface TranslationResult extends FuriganaResult {
   additionalVocab?: Array<{ word: string; reading: string; meaning: string }>;
   representativeWord?: string;
   representativeWordReading?: string;
+  entryType?: 'kanji' | 'vocabulary';
+  components?: string[];
 }
 
 export interface EngineError {

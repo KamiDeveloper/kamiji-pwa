@@ -17,7 +17,7 @@ export function KanjiSummaryFooter({
     <div
       style={{
         position: 'fixed',
-        bottom: '64px',
+        bottom: 'var(--bottom-nav-offset)',
         left: 0,
         right: 0,
         zIndex: 30,

@@ -44,6 +44,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 // ── Configuration ──────────────────────────────────────────
 const RAW_DIR = path.join(__dirname, 'raw');
@@ -51,8 +52,11 @@ const KANJIDIC_DIR = path.join(RAW_DIR, 'kanjidic');
 const JMDICT_DIR = path.join(RAW_DIR, 'jmdict');
 const OUTPUT_DIR = path.join(__dirname, '..', 'public', 'data');
 const GAPS_DIR = path.join(__dirname, 'gaps');
+const OFFICIAL_JLPT_CSV = path.join(__dirname, 'jlpt-official-kanjis', 'jlpt_vocab.csv');
 
 const ALL_LEVELS = ['n5', 'n4', 'n3', 'n2', 'n1'];
+const LEVEL_RANK = Object.fromEntries(ALL_LEVELS.map((level, index) => [level, index]));
+const DATASET_SCHEMA_VERSION = 3;
 
 // ── Helpers ────────────────────────────────────────────────
 function loadJSON(filepath) {
@@ -80,6 +84,70 @@ function loadAllBanks(dir, prefix, maxBanks = 20) {
     }
   }
   return data;
+}
+
+function sha256(value) {
+  return crypto.createHash('sha256').update(value).digest('hex');
+}
+
+function parseCSV(text) {
+  const rows = [];
+  let row = [];
+  let field = '';
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    const next = text[i + 1];
+
+    if (inQuotes) {
+      if (char === '"' && next === '"') {
+        field += '"';
+        i++;
+      } else if (char === '"') {
+        inQuotes = false;
+      } else {
+        field += char;
+      }
+      continue;
+    }
+
+    if (char === '"') {
+      inQuotes = true;
+    } else if (char === ',') {
+      row.push(field);
+      field = '';
+    } else if (char === '\n') {
+      row.push(field);
+      rows.push(row);
+      row = [];
+      field = '';
+    } else if (char !== '\r') {
+      field += char;
+    }
+  }
+
+  if (field.length > 0 || row.length > 0) {
+    row.push(field);
+    rows.push(row);
+  }
+
+  return rows;
+}
+
+function normalizeHeader(value) {
+  return String(value || '').trim().replace(/^\uFEFF/, '').toLowerCase();
+}
+
+function normalizeCSVLevel(value) {
+  const match = String(value || '').trim().toLowerCase().match(/^n([1-5])$/);
+  return match ? `n${match[1]}` : null;
+}
+
+function getEasiestLevel(levels) {
+  // The CSV is vocabulary-level data; a kanji can appear in several levels.
+  // Assign it to the first/easiest level so each kanji produces one card.
+  return [...levels].sort((a, b) => LEVEL_RANK[a] - LEVEL_RANK[b])[0] || null;
 }
 
 function normalizeJLPTLevel(value, usesOldScale) {
@@ -176,6 +244,175 @@ function extractKanjiChars(str) {
   return [...str].filter(ch => /[\u4E00-\u9FFF\u3400-\u4DBF]/.test(ch));
 }
 
+function uniqueBy(items, getKey) {
+  const seen = new Set();
+  const result = [];
+  for (const item of items) {
+    const key = getKey(item);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(item);
+  }
+  return result;
+}
+
+function splitReadingTokens(value) {
+  return String(value || '')
+    .split(/[\s、,;；]+/)
+    .map(token => token.trim())
+    .filter(Boolean);
+}
+
+function readingStem(value) {
+  return String(value || '')
+    .replace(/^-+/, '')
+    .split('.')[0]
+    .replace(/-+$/g, '')
+    .trim();
+}
+
+function pickBaseReading(kanjiData) {
+  const kunyomi = splitReadingTokens(kanjiData?.kunyomi || '')
+    .map(readingStem)
+    .find(Boolean);
+  if (kunyomi) return kunyomi;
+
+  return splitReadingTokens(kanjiData?.onyomi || '')[0] || '';
+}
+
+function isSingleKanjiKanaWord(expression, kChar) {
+  const kanjiChars = extractKanjiChars(expression);
+  return kanjiChars.length === 1 && kanjiChars[0] === kChar && expression !== kChar;
+}
+
+function mergeMeaningParts(...values) {
+  const seen = new Set();
+  const parts = [];
+
+  for (const value of values) {
+    for (const part of String(value || '').split(/[;；,]+/)) {
+      const clean = part.trim();
+      if (!clean) continue;
+      const key = clean.toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      parts.push(clean);
+    }
+  }
+
+  return parts.join('; ');
+}
+
+function termReadingsMatch(csvReading, termReading) {
+  if (!csvReading || !termReading) return false;
+  return splitReadingTokens(csvReading).includes(termReading);
+}
+
+function loadOfficialJLPTData(filepath) {
+  const empty = {
+    available: false,
+    kanjiLevelMap: {},
+    vocabByKanji: {},
+    termsByLevel: Object.fromEntries(ALL_LEVELS.map(level => [level, []])),
+    stats: {
+      rows: 0,
+      termsByLevel: {},
+      kanjiByLevel: {},
+      overlapCount: 0,
+      skippedRows: 0,
+    },
+  };
+
+  if (!fs.existsSync(filepath)) {
+    console.warn(`  Warning: Official JLPT CSV not found: ${filepath}`);
+    console.warn('     Falling back to KANJIDIC JLPT metadata only.');
+    return empty;
+  }
+
+  const rows = parseCSV(fs.readFileSync(filepath, 'utf-8')).filter(row =>
+    row.some(field => String(field || '').trim() !== '')
+  );
+
+  if (rows.length < 2) {
+    console.warn(`  Warning: Official JLPT CSV is empty or missing rows: ${filepath}`);
+    return empty;
+  }
+
+  const header = rows.shift().map(normalizeHeader);
+  const originalIdx = header.indexOf('original') !== -1 ? header.indexOf('original') : 0;
+  const furiganaIdx = header.indexOf('furigana') !== -1 ? header.indexOf('furigana') : 1;
+  const englishIdx = header.indexOf('english') !== -1 ? header.indexOf('english') : 2;
+  const levelIdx = header.indexOf('jlpt level') !== -1 ? header.indexOf('jlpt level') : 3;
+
+  const levelsByKanji = {};
+  const vocabByKanji = {};
+  const officialTermsByLevel = Object.fromEntries(ALL_LEVELS.map(level => [level, []]));
+  const termsByLevel = Object.fromEntries(ALL_LEVELS.map(level => [level, 0]));
+  let skippedRows = 0;
+
+  for (const row of rows) {
+    const expression = String(row[originalIdx] || '').trim();
+    const reading = String(row[furiganaIdx] || '').trim();
+    const meaningEn = String(row[englishIdx] || '').trim();
+    const level = normalizeCSVLevel(row[levelIdx]);
+
+    if (!expression || !level) {
+      skippedRows++;
+      continue;
+    }
+
+    termsByLevel[level]++;
+    officialTermsByLevel[level].push({
+      expression,
+      reading,
+      meaningEn,
+      level,
+    });
+
+    const kanjiChars = [...new Set(extractKanjiChars(expression))];
+    if (!kanjiChars.length) continue;
+
+    for (const kChar of kanjiChars) {
+      if (!levelsByKanji[kChar]) levelsByKanji[kChar] = new Set();
+      levelsByKanji[kChar].add(level);
+
+      if (!vocabByKanji[kChar]) vocabByKanji[kChar] = [];
+      vocabByKanji[kChar].push({
+        expression,
+        reading,
+        meaningEn,
+        level,
+      });
+    }
+  }
+
+  const kanjiLevelMap = {};
+  let overlapCount = 0;
+  for (const [kChar, levels] of Object.entries(levelsByKanji)) {
+    if (levels.size > 1) overlapCount++;
+    kanjiLevelMap[kChar] = getEasiestLevel(levels);
+  }
+
+  const kanjiByLevel = Object.fromEntries(ALL_LEVELS.map(level => [level, 0]));
+  for (const level of Object.values(kanjiLevelMap)) {
+    kanjiByLevel[level]++;
+  }
+
+  return {
+    available: true,
+    kanjiLevelMap,
+    vocabByKanji,
+    termsByLevel: officialTermsByLevel,
+    stats: {
+      rows: rows.length,
+      termsByLevel,
+      kanjiByLevel,
+      overlapCount,
+      skippedRows,
+    },
+  };
+}
+
 /**
  * Cleans and normalizes glossary entries from JMdict.
  * JMdict glossary can be strings or structured objects.
@@ -201,6 +438,94 @@ function normalizeGlossary(glossaryArray) {
 
 // ── Main Pipeline ──────────────────────────────────────────
 
+function getOfficialVocabForLevel(kanjiData, level) {
+  const officialVocabulary = kanjiData?.officialVocabulary || [];
+  const exactLevel = officialVocabulary.filter(vocab => vocab.level === level);
+  if (exactLevel.length > 0) return exactLevel;
+
+  return officialVocabulary
+    .slice()
+    .sort((a, b) => LEVEL_RANK[a.level] - LEVEL_RANK[b.level]);
+}
+
+function findBestTerm(termEntriesByExpression, expression, reading = '') {
+  const candidates = termEntriesByExpression[expression] || [];
+  if (!candidates.length) return null;
+
+  return candidates.find(entry => termReadingsMatch(reading, entry.reading)) || candidates[0];
+}
+
+function hydrateOfficialVocab(vocab, termEntriesByExpression) {
+  if (!vocab) return null;
+
+  const term = findBestTerm(termEntriesByExpression, vocab.expression, vocab.reading);
+  return {
+    expression: vocab.expression,
+    reading: term?.reading || splitReadingTokens(vocab.reading)[0] || vocab.reading || '',
+    meaningEs: term?.meaningEs || vocab.meaningEn || '',
+    partOfSpeech: term?.partOfSpeech || 'vocabulary',
+    score: typeof term?.score === 'number' ? term.score : 0,
+    level: vocab.level,
+    official: true,
+  };
+}
+
+function pickPedagogicalVocab(vocabEntries, kanjiData, level, termEntriesByExpression) {
+  const officialVocab = getOfficialVocabForLevel(kanjiData, level);
+  const hydratedOfficial = officialVocab
+    .map(vocab => hydrateOfficialVocab(vocab, termEntriesByExpression))
+    .filter(Boolean);
+
+  return hydratedOfficial.find(vocab => isSingleKanjiKanaWord(vocab.expression, kanjiData.character))
+    || hydratedOfficial.find(vocab => vocab.expression === kanjiData.character)
+    || hydratedOfficial[0]
+    || vocabEntries.find(entry => isSingleKanjiKanaWord(entry.expression, kanjiData.character))
+    || vocabEntries[0]
+    || null;
+}
+
+function buildAdditionalVocab(vocabEntries, kanjiData, level, representativeExpression, termEntriesByExpression) {
+  const official = getOfficialVocabForLevel(kanjiData, level)
+    .map(vocab => hydrateOfficialVocab(vocab, termEntriesByExpression))
+    .filter(Boolean);
+
+  return uniqueBy([...official, ...vocabEntries], entry => entry.expression)
+    .filter(entry => entry.expression !== representativeExpression)
+    .filter(entry => entry.expression && entry.reading && entry.meaningEs)
+    .slice(0, 3)
+    .map(entry => ({
+      word: entry.expression,
+      reading: entry.reading,
+      meaning: entry.meaningEs,
+    }));
+}
+
+function buildKanjiMeaning(kanjiData, representative) {
+  if (representative?.meaningEs && isSingleKanjiKanaWord(representative.expression, kanjiData.character)) {
+    return representative.meaningEs;
+  }
+
+  return mergeMeaningParts(...(kanjiData.meanings || []), representative?.meaningEs);
+}
+
+function buildVocabularyRecord(officialTerm, level, termEntriesByExpression) {
+  const term = findBestTerm(termEntriesByExpression, officialTerm.expression, officialTerm.reading);
+  const components = [...new Set(extractKanjiChars(officialTerm.expression))];
+  if (!components.length) return null;
+  if ([...officialTerm.expression].length === 1 && components.length === 1) return null;
+
+  return {
+    kanji: officialTerm.expression,
+    reading: term?.reading || splitReadingTokens(officialTerm.reading)[0] || officialTerm.reading || '',
+    meaningEs: term?.meaningEs || officialTerm.meaningEn || '',
+    partOfSpeech: term?.partOfSpeech || 'vocabulary',
+    level,
+    entryType: 'vocabulary',
+    components,
+    source: term ? 'official-csv+jmdict' : 'official-csv-fallback',
+  };
+}
+
 function buildDatasets(targetLevels) {
   console.log('╔══════════════════════════════════════════════════╗');
   console.log('║  KamiJi Dictionary Dataset Builder               ║');
@@ -221,13 +546,42 @@ function buildDatasets(targetLevels) {
   const usesOldScale = detectJLPTScale(kanjiBank);
   console.log(`   JLPT scale: ${usesOldScale ? 'Old (1-4)' : 'Modern (N5-N1)'}`);
 
+  console.log('\nLoading official JLPT vocabulary CSV...');
+  const officialJLPT = loadOfficialJLPTData(OFFICIAL_JLPT_CSV);
+  if (officialJLPT.available) {
+    console.log(`   Found ${officialJLPT.stats.rows} official vocab rows`);
+    for (const level of ALL_LEVELS) {
+      console.log(`   ${level.toUpperCase()}: ${officialJLPT.stats.kanjiByLevel[level]} unique kanji assigned from CSV`);
+    }
+    if (officialJLPT.stats.overlapCount > 0) {
+      console.log(`   ${officialJLPT.stats.overlapCount} kanji appear in multiple CSV levels; using earliest/easiest level`);
+    }
+  }
+
   // ── Step 2: Index kanji by JLPT level ────────────────────
   console.log('\n📊 Indexing kanji by JLPT level...');
   const kanjiByLevel = {};
   const kanjiDataMap = {}; // char -> { onyomi, kunyomi, meanings, tags }
+  const unclassifiedKanji = [];
+  const levelSourceStats = {
+    officialCsv: 0,
+    kanjidicFallback: 0,
+    officialOnly: 0,
+    unclassified: 0,
+    recoveredNoKanjidicJlpt: 0,
+    conflicts: 0,
+  };
+  const conflictSamples = [];
 
   for (const level of ALL_LEVELS) {
     kanjiByLevel[level] = [];
+  }
+
+  function addKanjiToLevel(level, character) {
+    if (!level || !kanjiByLevel[level]) return;
+    if (!kanjiByLevel[level].includes(character)) {
+      kanjiByLevel[level].push(character);
+    }
   }
 
   for (const entry of kanjiBank) {
@@ -236,7 +590,21 @@ function buildDatasets(targetLevels) {
 
     if (!character || typeof character !== 'string') continue;
 
-    const level = extractJLPTLevel(tags, stats, usesOldScale);
+    const officialLevel = officialJLPT.kanjiLevelMap[character] || null;
+    const kanjidicLevel = extractJLPTLevel(tags, stats, usesOldScale);
+    const level = officialLevel || kanjidicLevel;
+    const levelSource = officialLevel ? 'official-csv' : (kanjidicLevel ? 'kanjidic-fallback' : 'unclassified');
+
+    if (!kanjidicLevel && officialLevel) {
+      levelSourceStats.recoveredNoKanjidicJlpt++;
+    }
+
+    if (officialLevel && kanjidicLevel && officialLevel !== kanjidicLevel) {
+      levelSourceStats.conflicts++;
+      if (conflictSamples.length < 10) {
+        conflictSamples.push({ kanji: character, officialLevel, kanjidicLevel });
+      }
+    }
 
     kanjiDataMap[character] = {
       character,
@@ -245,11 +613,61 @@ function buildDatasets(targetLevels) {
       meanings: Array.isArray(meanings) ? meanings : [],
       tags: tags || '',
       stats: stats || {},
+      officialVocabulary: officialJLPT.vocabByKanji[character] || [],
+      officialLevel,
+      kanjidicLevel,
+      levelSource,
     };
 
-    if (level && kanjiByLevel[level]) {
-      kanjiByLevel[level].push(character);
+    if (level) {
+      addKanjiToLevel(level, character);
+      if (officialLevel) {
+        levelSourceStats.officialCsv++;
+      } else {
+        levelSourceStats.kanjidicFallback++;
+      }
+    } else {
+      levelSourceStats.unclassified++;
+      unclassifiedKanji.push({
+        kanji: character,
+        onyomi: onyomi || '',
+        kunyomi: kunyomi || '',
+        meaningFromKanjidic: Array.isArray(meanings) ? meanings.join('; ') : '',
+        reason: 'not_found_in_official_csv_or_kanjidic_jlpt',
+      });
     }
+  }
+
+  for (const [character, officialLevel] of Object.entries(officialJLPT.kanjiLevelMap)) {
+    if (kanjiDataMap[character]) continue;
+
+    kanjiDataMap[character] = {
+      character,
+      onyomi: '',
+      kunyomi: '',
+      meanings: [],
+      tags: '',
+      stats: {},
+      officialVocabulary: officialJLPT.vocabByKanji[character] || [],
+      officialLevel,
+      kanjidicLevel: null,
+      levelSource: 'official-csv-only',
+    };
+
+    addKanjiToLevel(officialLevel, character);
+    levelSourceStats.officialOnly++;
+  }
+
+  console.log(`   Level source: ${levelSourceStats.officialCsv} from official CSV, ${levelSourceStats.kanjidicFallback} from KANJIDIC fallback, ${levelSourceStats.officialOnly} CSV-only`);
+  if (levelSourceStats.recoveredNoKanjidicJlpt > 0) {
+    console.log(`   Recovered ${levelSourceStats.recoveredNoKanjidicJlpt} KANJIDIC kanji with no JLPT tag via official CSV`);
+  }
+  if (levelSourceStats.conflicts > 0) {
+    console.log(`   Resolved ${levelSourceStats.conflicts} official-vs-KANJIDIC level conflicts in favor of the CSV`);
+    console.log(`   Conflict samples: ${conflictSamples.map(sample => `${sample.kanji}:${sample.kanjidicLevel}->${sample.officialLevel}`).join(', ')}`);
+  }
+  if (levelSourceStats.unclassified > 0) {
+    console.log(`   ${levelSourceStats.unclassified} KANJIDIC kanji still have no level source; writing review report later`);
   }
 
   for (const level of ALL_LEVELS) {
@@ -271,6 +689,8 @@ function buildDatasets(targetLevels) {
 
   // Map: kanjiChar -> [{ expression, reading, meaningEs, partOfSpeech, score }]
   const kanjiVocabMap = {};
+  // Map: expression -> JMdict candidates. Used for exact compound lookups.
+  const termEntriesByExpression = {};
 
   for (const term of termBank) {
     // Schema: [expression, reading, defTags, rules, score, [glossary], seqNum, termTags]
@@ -281,26 +701,36 @@ function buildDatasets(targetLevels) {
     const meaningEs = normalizeGlossary(glossary);
     if (!meaningEs) continue;
 
-    const kanjiChars = extractKanjiChars(expression);
+    const vocabEntry = {
+      expression,
+      reading: reading || '',
+      meaningEs,
+      partOfSpeech: defTags || rules || '',
+      score: typeof score === 'number' ? score : 0,
+    };
+
+    if (!termEntriesByExpression[expression]) {
+      termEntriesByExpression[expression] = [];
+    }
+    termEntriesByExpression[expression].push(vocabEntry);
+
+    const kanjiChars = [...new Set(extractKanjiChars(expression))];
 
     for (const kChar of kanjiChars) {
       if (!kanjiVocabMap[kChar]) {
         kanjiVocabMap[kChar] = [];
       }
 
-      kanjiVocabMap[kChar].push({
-        expression,
-        reading: reading || '',
-        meaningEs,
-        partOfSpeech: defTags || rules || '',
-        score: typeof score === 'number' ? score : 0,
-      });
+      kanjiVocabMap[kChar].push(vocabEntry);
     }
   }
 
   // Sort vocab by score (higher = more common) for each kanji
   for (const kChar of Object.keys(kanjiVocabMap)) {
     kanjiVocabMap[kChar].sort((a, b) => b.score - a.score);
+  }
+  for (const expression of Object.keys(termEntriesByExpression)) {
+    termEntriesByExpression[expression].sort((a, b) => b.score - a.score);
   }
 
   console.log(`   Indexed vocab for ${Object.keys(kanjiVocabMap).length} unique kanji`);
@@ -310,7 +740,27 @@ function buildDatasets(targetLevels) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   fs.mkdirSync(GAPS_DIR, { recursive: true });
 
+  const unclassifiedPath = path.join(GAPS_DIR, 'unclassified-kanji.json');
+  if (unclassifiedKanji.length > 0) {
+    fs.writeFileSync(unclassifiedPath, JSON.stringify(unclassifiedKanji, null, 2), 'utf-8');
+    console.log(`   Review needed: ${unclassifiedKanji.length} unclassified kanji -> ${unclassifiedPath}`);
+  } else if (fs.existsSync(unclassifiedPath)) {
+    fs.unlinkSync(unclassifiedPath);
+  }
+
   const stats = {};
+  const manifest = {
+    schemaVersion: DATASET_SCHEMA_VERSION,
+    generatedAt: new Date().toISOString(),
+    sources: {
+      kanjidic: path.relative(path.join(__dirname, '..'), KANJIDIC_DIR).replace(/\\/g, '/'),
+      jmdict: path.relative(path.join(__dirname, '..'), JMDICT_DIR).replace(/\\/g, '/'),
+      officialJlptCsv: fs.existsSync(OFFICIAL_JLPT_CSV)
+        ? path.relative(path.join(__dirname, '..'), OFFICIAL_JLPT_CSV).replace(/\\/g, '/')
+        : null,
+    },
+    levels: {},
+  };
 
   for (const level of targetLevels) {
     const kanjiList = kanjiByLevel[level];
@@ -328,6 +778,20 @@ function buildDatasets(targetLevels) {
       if (!kanjiData) continue;
 
       const vocabEntries = kanjiVocabMap[kChar] || [];
+      const officialContext = getOfficialVocabForLevel(kanjiData, level).slice(0, 5);
+      const representative = pickPedagogicalVocab(
+        vocabEntries,
+        kanjiData,
+        level,
+        termEntriesByExpression
+      );
+      const additionalVocab = buildAdditionalVocab(
+        vocabEntries,
+        kanjiData,
+        level,
+        representative?.expression,
+        termEntriesByExpression
+      );
 
       if (vocabEntries.length === 0) {
         // GAP: Kanji exists in KANJIDIC but has no JMdict vocab match
@@ -336,46 +800,65 @@ function buildDatasets(targetLevels) {
           onyomi: kanjiData.onyomi,
           kunyomi: kanjiData.kunyomi,
           meaningFromKanjidic: kanjiData.meanings.join('; '),
+          levelSource: kanjiData.levelSource,
+          officialLevel: kanjiData.officialLevel,
+          kanjidicLevel: kanjiData.kanjidicLevel,
+          officialVocab: officialContext,
           reason: 'no_vocab_match',
           suggestion: `No JMdict-ES vocabulary found containing "${kChar}". Needs AI-generated vocab entry.`,
         });
 
-        // Still create a basic entry from KANJIDIC data alone
+        // Still create a basic entry from KANJIDIC, with CSV vocab as fallback.
         dataset.push({
           kanji: kChar,
-          reading: kanjiData.kunyomi.split(/[\s、,]+/)[0] || kanjiData.onyomi.split(/[\s、,]+/)[0] || '',
-          meaningEs: kanjiData.meanings.join('; ') || '',
+          reading: pickBaseReading(kanjiData) || representative?.reading || kChar,
+          meaningEs: buildKanjiMeaning(kanjiData, representative),
           onyomi: kanjiData.onyomi,
           kunyomi: kanjiData.kunyomi,
           partOfSpeech: 'kanji',
           level,
+          entryType: 'kanji',
+          representativeWord: representative?.expression,
+          representativeWordReading: representative?.reading,
+          source: representative ? 'kanjidic+official-csv' : 'kanjidic-fallback',
+          ...(additionalVocab.length > 0 && { additionalVocab }),
         });
       } else {
-        // Pick the best (highest score) vocab entry as the representative word
-        const best = vocabEntries[0];
+        // Prefer a JMdict entry that also appears in the official JLPT CSV.
+        const best = representative || vocabEntries[0];
+        const matchedOfficialExpression = officialContext.some(vocab => vocab.expression === best.expression);
 
         // Also collect up to 3 secondary vocab entries for richer data
-        const secondaryVocab = vocabEntries.slice(1, 4).map(v => ({
-          word: v.expression,
-          reading: v.reading,
-          meaning: v.meaningEs,
-        }));
+        const secondaryVocab = additionalVocab;
 
         dataset.push({
           kanji: kChar,
-          reading: best.reading || kanjiData.kunyomi.split(/[\s、,]+/)[0] || '',
-          meaningEs: best.meaningEs,
+          reading: pickBaseReading(kanjiData) || best.reading || kChar,
+          meaningEs: buildKanjiMeaning(kanjiData, best),
           onyomi: kanjiData.onyomi,
           kunyomi: kanjiData.kunyomi,
-          partOfSpeech: best.partOfSpeech || 'unknown',
+          partOfSpeech: 'kanji',
           level,
+          entryType: 'kanji',
           // Representative word from JMdict
           representativeWord: best.expression,
           representativeWordReading: best.reading,
+          source: matchedOfficialExpression ? 'kanjidic+official-csv+jmdict' : 'kanjidic+jmdict',
           // Additional vocab (optional enrichment)
           ...(secondaryVocab.length > 0 && { additionalVocab: secondaryVocab }),
         });
       }
+    }
+
+    const seenVocabulary = new Set(dataset.map(entry => `${entry.kanji}\t${entry.reading}`));
+    for (const officialTerm of officialJLPT.termsByLevel[level] || []) {
+      const vocabularyRecord = buildVocabularyRecord(officialTerm, level, termEntriesByExpression);
+      if (!vocabularyRecord || !vocabularyRecord.meaningEs) continue;
+
+      const key = `${vocabularyRecord.kanji}\t${vocabularyRecord.reading}`;
+      if (seenVocabulary.has(key)) continue;
+      seenVocabulary.add(key);
+      dataset.push(vocabularyRecord);
     }
 
     // Sort dataset alphabetically by kanji for consistency
@@ -383,12 +866,21 @@ function buildDatasets(targetLevels) {
 
     // Write dataset
     const outPath = path.join(OUTPUT_DIR, `${level}-jmdict.json`);
-    fs.writeFileSync(outPath, JSON.stringify(dataset, null, 2), 'utf-8');
+    const datasetJson = JSON.stringify(dataset, null, 2);
+    fs.writeFileSync(outPath, datasetJson, 'utf-8');
+    manifest.levels[level] = {
+      file: `${level}-jmdict.json`,
+      entries: dataset.length,
+      checksum: sha256(datasetJson),
+      gaps: gaps.length,
+    };
 
     // Write gaps
+    const gapsPath = path.join(GAPS_DIR, `${level}-gaps.json`);
     if (gaps.length > 0) {
-      const gapsPath = path.join(GAPS_DIR, `${level}-gaps.json`);
       fs.writeFileSync(gapsPath, JSON.stringify(gaps, null, 2), 'utf-8');
+    } else if (fs.existsSync(gapsPath)) {
+      fs.unlinkSync(gapsPath);
     }
 
     stats[level] = {
@@ -407,6 +899,9 @@ function buildDatasets(targetLevels) {
       console.log(`      ⚠ ${gaps.length} gaps (${gapPct}%) → scripts/gaps/${level}-gaps.json`);
     }
   }
+
+  const manifestPath = path.join(OUTPUT_DIR, 'manifest.json');
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf-8');
 
   // ── Step 6: Summary ──────────────────────────────────────
   console.log('\n╔══════════════════════════════════════════════════╗');

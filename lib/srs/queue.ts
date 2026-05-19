@@ -44,8 +44,7 @@ function cardToStatus(fsrsState: Record<string, unknown>): KanjiStatus {
  * SRS-09: If last study > 7 days ago, spread overdue (return only DAILY_REVIEW_CAP anyway — spread is enforced by cap)
  */
 export async function getDailyQueue(
-  level: JLPTLevel,
-  userId?: string
+  level: JLPTLevel
 ): Promise<DailyQueue> {
   const boundary = getTodayBoundary().toISOString();
 
@@ -107,15 +106,18 @@ export async function getDailyQueue(
  * SRS-09: Welcome-back check.
  * Returns true if user was inactive for > 7 days.
  */
-export async function isWelcomeBackScenario(level: JLPTLevel): Promise<boolean> {
-  const progress = await db.userProgress.toArray();
-  if (!progress.length) return false;
+export async function getDaysSinceLastStudy(uid?: string): Promise<number | null> {
+  const userProgress = uid ? await db.userProgress.get(uid) : (await db.userProgress.toArray())[0];
+  if (!userProgress?.lastStudiedAt) return null;
 
-  const lastStudied = progress[0].lastStudiedAt;
-  if (!lastStudied) return false;
+  return Math.floor(
+    (Date.now() - new Date(userProgress.lastStudiedAt).getTime()) / (1000 * 60 * 60 * 24)
+  );
+}
 
-  const daysSince = (Date.now() - new Date(lastStudied).getTime()) / (1000 * 60 * 60 * 24);
-  return daysSince > 7;
+export async function isWelcomeBackScenario(uid?: string): Promise<boolean> {
+  const daysSince = await getDaysSinceLastStudy(uid);
+  return daysSince !== null && daysSince > 7;
 }
 
 /**

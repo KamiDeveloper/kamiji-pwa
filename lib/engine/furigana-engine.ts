@@ -7,6 +7,10 @@ import { getCached, setCache } from './cache-layer';
 import { queryGemini } from './gemini-layer';
 import type { FuriganaResult, TranslationResult, EngineError, JLPTLevel } from './types';
 
+function isUsableAiCache(result: TranslationResult | null): result is TranslationResult {
+  return result?.source === 'ai';
+}
+
 export class FuriganaEngine {
   /**
    * Resolve a kanji to its basic reading and meaning.
@@ -25,7 +29,7 @@ export class FuriganaEngine {
   ): Promise<{ result: FuriganaResult; error?: EngineError }> {
     // Step 1: Check cache (full AI result satisfies FuriganaResult shape)
     const cached = await getCached(kanjiChar, context, level);
-    if (cached) {
+    if (isUsableAiCache(cached)) {
       return { result: cached };
     }
 
@@ -33,8 +37,6 @@ export class FuriganaEngine {
     const dictResult = await lookupKanji(kanjiChar, level);
     if (dictResult) {
       if (!encryptedKey) {
-        // No AI key — cache the dictionary hit to avoid repeated DB lookups
-        await setCache(kanjiChar, context, level, { ...dictResult });
         return { result: dictResult };
       }
       // Dictionary hit available but continue to AI for richer data if key provided
@@ -92,7 +94,7 @@ export class FuriganaEngine {
   ): Promise<{ result: TranslationResult; error?: EngineError }> {
     // Check cache for a full translation (may already have AI-enriched data)
     const cached = await getCached(kanjiChar, context, level);
-    if (cached) {
+    if (isUsableAiCache(cached)) {
       return { result: cached };
     }
 
@@ -109,13 +111,7 @@ export class FuriganaEngine {
         const engineError = error as EngineError;
 
         if (dictResult) {
-          // Enrich dictionary result into a TranslationResult shape
-          const enriched: TranslationResult = {
-            ...dictResult,
-            onyomi: dictResult ? undefined : undefined,
-            kunyomi: dictResult ? undefined : undefined,
-          };
-          return { result: enriched, error: engineError };
+          return { result: dictResult, error: engineError };
         }
 
         // Full fallback
@@ -131,8 +127,7 @@ export class FuriganaEngine {
 
     // No AI key — return dictionary or heuristic
     if (dictResult) {
-      const translation: TranslationResult = { ...dictResult };
-      return { result: translation };
+      return { result: dictResult };
     }
 
     return {

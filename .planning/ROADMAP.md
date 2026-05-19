@@ -53,7 +53,7 @@
 - Kanji state machine: `createKanji()`, `processReview(rating)`, `getKanjiState()` service functions
 - Daily review queue computation: filters kanji by `scheduledDate ≤ today (4AM boundary)`, sorts by urgency, caps at 30 + 5 new
 - Firestore sync service: writes summary data to Firestore (level, totalLearned, streak, lastSync); reads on login for restoration
-- BYOK key encryption: Web Crypto API (`AES-GCM`) to encrypt/decrypt Gemini API key stored in IndexedDB; never in Firestore or localStorage
+- BYOK key encryption: Web Crypto API (`AES-GCM`) to encrypt/decrypt Gemini API key stored locally in IndexedDB and synced to Firestore only as an encrypted bundle for multi-device restore; never in localStorage, never in plaintext
 - `useKanjiStore` Zustand slice: kanjiState, learnKanji, reviewKanji, getDailyQueue
 - `useDictionary` hook: query IndexedDB for a kanji's readings + meanings + examples
 - Progress computation service: `computeLevelProgress(userId)` → `{ coverage: number, retention: number, canLevelUp: boolean }`
@@ -61,7 +61,7 @@
 
 **Key pitfalls addressed:**
 - P2 (IndexedDB hydration): All Dexie usage is client-only with `'use client'` guards
-- P11 (BYOK key security): Web Crypto AES-GCM encryption; key never leaves IndexedDB
+- P11 (BYOK key security): Web Crypto AES-GCM encryption; plaintext key never leaves the device and Firestore only stores encrypted BYOK bundles
 - P12 (Firestore rules): Rules enforce `auth.uid == resource.data.userId`
 - P13 (Firestore cost): FSRS computation is 100% client-side; only summary synced
 - P14 (FSRS defaults): ts-fsrs used with correct FSRS weights, not SM-2
@@ -75,7 +75,7 @@
 - [ ] Creating a new card with `createEmptyCard()` and calling `processReview(Rating.Good)` updates `due` date correctly
 - [ ] Daily queue returns ≤ 30 cards, with overdue first and new cards capped at 5
 - [ ] Gemini API key encrypted: value stored in IndexedDB is NOT the plaintext key
-- [ ] Firestore document at `users/{uid}/progress` reflects correct level and totalLearned after study session
+- [ ] Firestore user data reflects correct summary progress and stores the BYOK bundle only in encrypted form
 - [ ] `computeLevelProgress` returns correct coverage and retention for a known test state
 - [ ] After simulating 10 days offline, `getDailyQueue()` returns ≤ 30 cards (not 500)
 

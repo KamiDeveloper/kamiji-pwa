@@ -2,7 +2,7 @@
 // lib/crypto/byok.ts
 // BYOK (Bring Your Own Key) secure storage service using Web Crypto API.
 // Keys are NEVER sent to our servers in plaintext. They are encrypted
-// locally with a user-provided PIN before being synced to Firestore.
+// locally with a user-provided PIN before optional encrypted sync to Firestore.
 
 const SALT_LENGTH = 16;
 const IV_LENGTH = 12;

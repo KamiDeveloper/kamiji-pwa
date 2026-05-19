@@ -6,6 +6,7 @@
 // Color tokens: --color-bg (#FFF4E6), --color-brand-gold (#C89D4A), --color-text (#0F1320)
 
 import { useEffect, useState, useCallback } from 'react';
+import Image from 'next/image';
 import { loadDictionary, isDictionaryLoaded } from '@/lib/dictionary/loader';
 import type { LoadProgress } from '@/lib/dictionary/types';
 import type { JLPTLevel } from '@/lib/db';
@@ -19,6 +20,7 @@ export default function DictionaryLoader({ level, children }: DictionaryLoaderPr
   const [isLoading, setIsLoading] = useState<boolean | null>(null); // null = checking
   const [progress, setProgress] = useState<LoadProgress>({ loaded: 0, total: 1, phase: 'fetching' });
   const [error, setError] = useState<string | null>(null);
+  const [retryNonce, setRetryNonce] = useState(0);
 
   const handleProgress = useCallback((p: LoadProgress) => {
     setProgress(p);
@@ -28,6 +30,8 @@ export default function DictionaryLoader({ level, children }: DictionaryLoaderPr
     let cancelled = false;
 
     async function check() {
+      setIsLoading(null);
+      setError(null);
       try {
         const loaded = await isDictionaryLoaded(level);
         if (cancelled) return;
@@ -49,7 +53,7 @@ export default function DictionaryLoader({ level, children }: DictionaryLoaderPr
 
     check();
     return () => { cancelled = true; };
-  }, [level, handleProgress]);
+  }, [level, handleProgress, retryNonce]);
 
   // Still checking
   if (isLoading === null) return null;
@@ -65,7 +69,11 @@ export default function DictionaryLoader({ level, children }: DictionaryLoaderPr
           <p className="dictionary-loader-error">⚠ {error}</p>
           <button
             className="dictionary-loader-retry"
-            onClick={() => { setError(null); setIsLoading(null); }}
+            onClick={() => {
+              setError(null);
+              setIsLoading(null);
+              setRetryNonce((value) => value + 1);
+            }}
           >
             Reintentar
           </button>
@@ -90,12 +98,13 @@ export default function DictionaryLoader({ level, children }: DictionaryLoaderPr
     <div className="dictionary-loader-screen" aria-live="polite" aria-label="Cargando diccionario">
       {/* Kami-chan illustration placeholder — replace with actual PNG asset */}
       <div className="dictionary-loader-illustration" aria-hidden="true">
-        <img
+        <Image
           src="/images/kami-chan-reading.png"
           alt=""
           className="dictionary-loader-fox"
           width={220}
           height={220}
+          priority
         />
       </div>
 

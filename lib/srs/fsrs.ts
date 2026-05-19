@@ -9,6 +9,8 @@ import {
   Rating,
   State,
   type Card,
+  type Grade,
+  type RecordLog,
 } from 'ts-fsrs';
 import { db } from '@/lib/db';
 import type { JLPTLevel } from '@/lib/db';
@@ -34,11 +36,24 @@ function fsrsStateToStatus(state: State): KanjiStatus {
   }
 }
 
+function isReviewGrade(rating: Rating): rating is Grade {
+  return rating !== Rating.Manual;
+}
+
 // ── Create a new kanji card ────────────────────────────────
 export async function createKanji(
   kanjiChar: string,
   level: JLPTLevel
 ): Promise<number> {
+  const existing = await db.kanji
+    .where('[kanjiChar+level]')
+    .equals([kanjiChar, level])
+    .first();
+
+  if (existing?.id !== undefined) {
+    return existing.id;
+  }
+
   const card = createEmptyCard();
   const now = new Date().toISOString();
 
@@ -64,9 +79,13 @@ export async function processReview(
   const card = record.fsrsState as unknown as Card;
   const now = new Date();
 
+  if (!isReviewGrade(rating)) {
+    throw new Error('Manual rating is not supported for SRS reviews');
+  }
+
   // ts-fsrs repeat() returns scheduling options for all ratings
-  const schedulingCards = f.repeat(card, now);
-  const result = (schedulingCards as any)[rating];
+  const schedulingCards: RecordLog = f.repeat(card, now);
+  const result = schedulingCards[rating];
 
   const updatedCard = result.card;
   const scheduledDate = updatedCard.due.toISOString();

@@ -2,9 +2,10 @@
 
 import { Serwist } from "serwist";
 import { CacheFirst, NetworkFirst, ExpirationPlugin } from "serwist";
+import type { PrecacheEntry } from "serwist";
 
 declare const self: ServiceWorkerGlobalScope & {
-  __SW_MANIFEST: any[];
+  __SW_MANIFEST: (PrecacheEntry | string)[];
 };
 
 const serwist = new Serwist({

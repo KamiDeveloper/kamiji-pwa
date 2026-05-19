@@ -20,6 +20,7 @@ export interface KanjiDetailProps {
 export function KanjiDetail({ result, onClose }: KanjiDetailProps) {
   // Swipe-down to close
   const dragStartY = useRef<number | null>(null);
+  const showStrokeOrder = result.entryType !== 'vocabulary' && [...result.kanji].length === 1;
 
   function handlePointerDown(e: React.PointerEvent) {
     dragStartY.current = e.clientY;
@@ -45,7 +46,7 @@ export function KanjiDetail({ result, onClose }: KanjiDetailProps) {
         position: 'fixed',
         inset: 0,
         zIndex: 60,
-        background: 'color-mix(in srgb, var(--color-bg) 98%, transparent)',
+        background: 'var(--color-bg)',
         overflowY: 'auto',
         display: 'flex',
         flexDirection: 'column',
@@ -194,18 +195,20 @@ export function KanjiDetail({ result, onClose }: KanjiDetailProps) {
         )}
 
         {/* Stroke order placeholder */}
-        <Section title="Orden de trazos">
-          <div style={{
-            border: '1px dashed var(--color-border)',
-            borderRadius: 12,
-            padding: '24px 16px',
-            textAlign: 'center',
-            color: 'var(--color-text-muted)',
-            fontSize: 13,
-          }}>
-            Orden de trazos próximamente
-          </div>
-        </Section>
+        {showStrokeOrder && (
+          <Section title="Orden de trazos">
+            <div style={{
+              border: '1px dashed var(--color-border)',
+              borderRadius: 12,
+              padding: '24px 16px',
+              textAlign: 'center',
+              color: 'var(--color-text-muted)',
+              fontSize: 13,
+            }}>
+              Orden de trazos próximamente
+            </div>
+          </Section>
+        )}
       </div>
     </motion.div>
   );

@@ -1,4 +1,6 @@
-// app/(app)/page.tsx — Home (tab: Inicio)
+// app/(app)/page.tsx - Home (tab: Inicio)
+import { SrsContextPanel } from "@/components/srs/SrsContextPanel";
+
 export default function HomePage() {
   return (
     <div
@@ -19,11 +21,12 @@ export default function HomePage() {
           margin: 0,
         }}
       >
-        神字 KamiJi
+        KamiJi
       </h1>
       <p style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-body)" }}>
-        Inicio — Fase 4 pendiente
+        Lectura y repaso conectados a tu progreso.
       </p>
+      <SrsContextPanel surface="home" />
     </div>
   );
 }

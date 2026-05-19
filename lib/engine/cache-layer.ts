@@ -8,7 +8,7 @@ import type { TranslationResult } from './types';
 const TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
 
 function buildKey(text: string, context: string, level: string): string {
-  return `${text}:${context}:${level}`;
+  return JSON.stringify([text, context, level]);
 }
 
 /**

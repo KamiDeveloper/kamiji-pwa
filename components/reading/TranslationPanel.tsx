@@ -23,6 +23,7 @@ export interface TranslationPanelProps {
   translation?: TranslationResult;
   error?: EngineError;
   isLoading?: boolean;
+  actionMessage?: string | null;
   onClose: () => void;
   /** Swipe right → mark as learned */
   onSwipeRight: (kanji: string) => void;
@@ -49,6 +50,7 @@ export function TranslationPanel({
   translation,
   error,
   isLoading = false,
+  actionMessage = null,
   onClose,
   onSwipeRight,
   onSwipeLeft,
@@ -143,10 +145,10 @@ export function TranslationPanel({
               onPointerUp={handlePointerUp}
               style={{
                 position: 'fixed',
-                bottom: 0,
+                bottom: 'var(--bottom-nav-offset)',
                 left: 0,
                 right: 0,
-                maxHeight: '60vh',
+                maxHeight: 'min(60vh, calc(100svh - var(--bottom-nav-offset) - 24px))',
                 zIndex: 50,
                 background: panelBg ?? 'color-mix(in srgb, var(--color-surface) 95%, transparent)',
                 backdropFilter: 'blur(8px)',
@@ -207,7 +209,24 @@ export function TranslationPanel({
               </div>
 
               {/* Scrollable content */}
-              <div style={{ flex: 1, overflowY: 'auto', padding: '16px 20px 24px' }}>
+              <div style={{ flex: 1, overflowY: 'auto', padding: '16px 20px 28px' }}>
+                {actionMessage && (
+                  <div
+                    role="status"
+                    style={{
+                      margin: '0 0 14px',
+                      padding: '10px 12px',
+                      borderRadius: 8,
+                      border: '1px solid color-mix(in srgb, var(--color-brand-vermilion) 38%, var(--color-border))',
+                      background: 'color-mix(in srgb, var(--color-brand-vermilion) 10%, var(--color-surface))',
+                      color: 'var(--color-text)',
+                      fontSize: 13,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {actionMessage}
+                  </div>
+                )}
                 {isLoading && <ShimmerSkeleton />}
                 {!isLoading && error && <ErrorState error={error} />}
                 {!isLoading && !error && translation && (

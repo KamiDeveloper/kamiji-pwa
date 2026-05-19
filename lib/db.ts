@@ -32,6 +32,22 @@ export interface DictionaryRecord {
   partOfSpeech?: string;        // e.g. "noun", "verb-ichidan"
   representativeWord?: string;  // common word using this kanji (e.g. "食べる")
   representativeWordReading?: string; // reading of representative word
+  entryType?: "kanji" | "vocabulary";
+  components?: string[];
+  additionalVocab?: Array<{
+    word: string;
+    reading: string;
+    meaning: string;
+  }>;
+  source?: string;
+}
+
+export interface DictionaryMetaRecord {
+  level: JLPTLevel;
+  schemaVersion: number;
+  entryCount: number;
+  checksum?: string;
+  loadedAt: string;
 }
 
 export interface AiCacheRecord {
@@ -66,6 +82,7 @@ export interface StoryProgressRecord {
 class KamiJiDatabase extends Dexie {
   kanji!: EntityTable<KanjiRecord, "id">;
   dictionary!: EntityTable<DictionaryRecord, "id">;
+  dictionaryMeta!: EntityTable<DictionaryMetaRecord, "level">;
   aiCache!: EntityTable<AiCacheRecord, "query">;
   userProgress!: EntityTable<UserProgressRecord, "uid">;
   storyProgress!: EntityTable<StoryProgressRecord, "id">;
@@ -94,6 +111,17 @@ class KamiJiDatabase extends Dexie {
       storyProgress: "++id, [storyId+uid], uid, storyId",
     }).upgrade(() => {
       // No destructive changes — new optional fields default to undefined
+    });
+
+    this.version(3).stores({
+      kanji: "++id, kanjiChar, level, [kanjiChar+level], scheduledDate",
+      dictionary: "++id, kanji, level, [kanji+level]",
+      dictionaryMeta: "level, schemaVersion, loadedAt",
+      aiCache: "query, cachedAt",
+      userProgress: "uid, level",
+      storyProgress: "++id, [storyId+uid], uid, storyId",
+    }).upgrade(() => {
+      // Dataset metadata is written by the dictionary loader after validation.
     });
   }
 }

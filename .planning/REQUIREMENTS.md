@@ -37,7 +37,7 @@
 
 - [ ] **ENGINE-01**: Furigana resolution uses a 3-layer approach: JMdict/KANJIDIC2 offline → Gemini AI (if key configured) → heuristic/romanization fallback
 - [ ] **ENGINE-02**: AI responses (furigana, translation, breakdown) are cached in IndexedDB with the query as key (no duplicate API calls)
-- [ ] **ENGINE-03**: Gemini API key is stored encrypted using Web Crypto API in IndexedDB — never in localStorage, never in Firestore
+- [ ] **ENGINE-03**: Gemini API key is stored encrypted using Web Crypto API in IndexedDB and may sync to Firestore only as an encrypted bundle for multi-device restore — never in localStorage, never in plaintext
 - [ ] **ENGINE-04**: App handles all AI failure modes gracefully:
   - Rate limit (short): countdown timer + fallback to dictionary
   - Rate limit (daily): disable AI, enable dictionary-only mode
